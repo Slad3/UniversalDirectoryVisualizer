@@ -7,3 +7,6 @@ Requires Nodejs and npm to run
 Run `npm install` to install all packages
 
 Run `npm start` to start the electron application
+
+## Scrum 1 Note
+Joshua Elmer pushed this line
