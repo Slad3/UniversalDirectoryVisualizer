@@ -52,6 +52,16 @@ public class Main {
             return new JSONObject(dictionary);
         });
 
+        app.get("/parseDirectory/{directory}", ctx -> {
+            ctx.setResponseType(MediaType.json);
+            return new JSONObject(new Driver(ctx.path("directory").value()).parse());
+        });
+
+        app.get("/test", ctx -> {
+            ctx.setResponseType(MediaType.json);
+            return new JSONObject(new Driver(".").parse());
+        });
+
         /**
          * Post and getting data from a form example
          */
