@@ -46,7 +46,7 @@ public class Main {
             ctx.setResponseType(MediaType.html);
 
             Map<String, String> dictionary = new HashMap<>();
-            dictionary.put("Backend Working", "true");
+            dictionary.put("Backend Working update", "true");
 
             ctx.setResponseType(MediaType.json);
             return new JSONObject(dictionary);

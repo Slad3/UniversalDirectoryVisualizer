@@ -1,0 +1,13 @@
+.appComponentTitle{
+	/* margin-top: 50px; */
+	/* font-weight: bold; */
+	color: rgb(0, 0, 0)
+}
+
+
+.content{
+	margin: 0px;
+	background-color: rgb(129, 129, 129);
+
+	height: 100vh;
+}

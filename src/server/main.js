@@ -1,34 +1,40 @@
-const {app, BrowserView, BrowserWindow } = require('electron')
-const { exit } = require('process')
+const { app, BrowserView, BrowserWindow, autoUpdater } = require('electron')
+const { exit, chdir, cwd } = require('process')
+
+const url = require("url");
+const path = require("path");
 
 function createWindow() {
 	const win = new BrowserWindow({ width: 1280, height: 800 })
 
-	const view = new BrowserView()
-	win.setBrowserView(view)
-	view.setBounds({ x: 0, y: 0, width: 1280, height: 720 })
-	
-	// view.webContents.loadURL('https://google.com/')
-	view.webContents.loadFile('src/public/index.html')
+	__dirname = __dirname.substr(0, __dirname.length - "public".length) + "public"
+
+	chdir('src/public');
+	win.webContents.loadFile(__dirname + "/index.html")
+
+
+	// For opening the debugger inside electron
+	// view.webContents.openDevTools()
 }
 
 app.whenReady().then(() => {
-    var python = require('child_process').spawn('java', ['-jar', 'src/server/backend.jar']);
-    python.stdout.on('data',function(data){
-		var statement = data.toString('utf8')
-	    console.log(statement);
 
-		if(statement.includes("Backend Started")){
+	var python = require('child_process').spawn('java', ['-jar', 'src/server/backend.jar']);
+	python.stdout.on('data', function (data) {
+		var statement = data.toString('utf8')
+		// console.log(statement);
+
+		if (statement.includes("Backend Started")) {
 			console.log("start")
 			createWindow()
 		}
 
-		if(statement.includes("Stopped Jooby")){
+		if (statement.includes("Stopped Jooby")) {
 			console.log("Stopped")
 			exit(1)
 		}
 
-    });
+	});
 })
 
 app.on('window-all-closed', () => {
