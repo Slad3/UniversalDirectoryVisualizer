@@ -4,6 +4,7 @@
 Requires Nodejs and npm to run
 
 ## Starting the project
+
 Run `npm install` to install all packages
 
 Run `npm start` to start the electron application
@@ -20,8 +21,8 @@ All frontend development files are in frontend folder
 
 I recommend opening the backend folder in intellij and doing all backend testing though there. There are a couple tests in the src/main/tests folder for quick testing and development.
 
-
 `./scripts/buildBackend.ps1` will build and compile the backend into a jar and move it into the src/server folder for electron to serve it in app.
 
 ## Sprint 1 Note
+
 Joshua Elmer pushed this line
