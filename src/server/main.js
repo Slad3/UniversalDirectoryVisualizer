@@ -19,8 +19,8 @@ function createWindow() {
 
 app.whenReady().then(() => {
 
-	var python = require('child_process').spawn('java', ['-jar', 'src/server/backend.jar']);
-	python.stdout.on('data', function (data) {
+	var javaProcess = require('child_process').spawn('java', ['-jar', 'src/server/backend.jar']);
+	javaProcess.stdout.on('data', function (data) {
 		var statement = data.toString('utf8')
 		// console.log(statement);
 

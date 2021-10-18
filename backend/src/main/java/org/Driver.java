@@ -14,7 +14,6 @@ public class Driver {
         this.url = url;
     }
 
-
     // Will later return a JSON object
     public HashMap parse() {
         return parseDirectory(this.url);

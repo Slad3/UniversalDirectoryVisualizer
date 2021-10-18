@@ -34,6 +34,7 @@ public class Main {
         app.setServerOptions(new ServerOptions()
                 .setPort(18989)
         );
+
         app.decorator(new CorsHandler());
         /**
         * Index route
@@ -52,10 +53,25 @@ public class Main {
             return new JSONObject(dictionary);
         });
 
+        app.post("/parseDirectory/", ctx -> {
+            String directory;
+            try {
+                directory = ctx.form("directory").value();
+                System.out.println(directory);
+            }catch(Exception e){
+                return "No directory found in form";
+            }
+
+            ctx.setResponseType(MediaType.json);
+            return new JSONObject(new Driver(directory).parse());
+        });
+
         app.get("/parseDirectory/{directory}", ctx -> {
             ctx.setResponseType(MediaType.json);
             return new JSONObject(new Driver(ctx.path("directory").value()).parse());
         });
+
+
 
         app.get("/test", ctx -> {
             ctx.setResponseType(MediaType.json);
@@ -70,7 +86,6 @@ public class Main {
             System.out.println(formPost);
             return formPost;
         });
-
 
         app.start();
 
