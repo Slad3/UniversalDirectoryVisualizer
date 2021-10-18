@@ -1,4 +1,5 @@
 node_modules
 
 backend/.idea
+backend/.eclipse
 backend/target

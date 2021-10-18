@@ -55,6 +55,7 @@ public class Main {
 
         app.post("/parseDirectory/", ctx -> {
             String directory;
+            Formdata form = ctx.form();
             try {
                 directory = ctx.form("directory").value();
                 System.out.println(directory);
@@ -70,8 +71,6 @@ public class Main {
             ctx.setResponseType(MediaType.json);
             return new JSONObject(new Driver(ctx.path("directory").value()).parse());
         });
-
-
 
         app.get("/test", ctx -> {
             ctx.setResponseType(MediaType.json);
