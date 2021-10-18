@@ -1,4 +1,4 @@
-const { app, BrowserView, BrowserWindow, autoUpdater } = require('electron')
+const { app, BrowserView, BrowserWindow, autoUpdater, dialog } = require('electron')
 const { exit, chdir, cwd } = require('process')
 
 const url = require("url");
@@ -14,7 +14,7 @@ function createWindow() {
 
 
 	// For opening the debugger inside electron
-	// view.webContents.openDevTools()
+	win.webContents.openDevTools()
 }
 
 app.whenReady().then(() => {
@@ -22,11 +22,15 @@ app.whenReady().then(() => {
 	var javaProcess = require('child_process').spawn('java', ['-jar', 'src/server/backend.jar']);
 	javaProcess.stdout.on('data', function (data) {
 		var statement = data.toString('utf8')
-		// console.log(statement);
+		console.log(statement);
 
 		if (statement.includes("Backend Started")) {
 			console.log("start")
 			createWindow()
+			// dialog.showOpenDialog({ properties: ['openFolder', 'multiSelections'] })
+			// .then(data => {
+			// 	console.log(data)
+			// })
 		}
 
 		if (statement.includes("Stopped Jooby")) {
@@ -36,6 +40,9 @@ app.whenReady().then(() => {
 
 	});
 })
+
+async function checkJava(){
+}
 
 app.on('window-all-closed', () => {
 	if (process.platform !== 'darwin') {
