@@ -11,10 +11,10 @@ public class DriverTest {
 
         long start = System.currentTimeMillis();
 
-//        Driver driver = new Driver("C:\\Users\\Ben\\Documents\\Cheat Sheets\\");
+        Driver driver = new Driver("C:\\Users\\Ben\\Documents\\Cheat Sheets\\");
 //        Driver driver = new Driver("C:\\Program Files\\");
 //        Driver driver = new Driver("C:\\");
-        Driver driver = new Driver(".");
+//        Driver driver = new Driver(".");
         System.out.println(driver.parse());
 
 

@@ -21,11 +21,11 @@ app.whenReady().then(() => {
 
 	var javaProcess = require('child_process').spawn('java', ['-jar', 'src/server/backend.jar']);
 	javaProcess.stdout.on('data', function (data) {
-		var statement = data.toString('utf8')
+		var statement = data.toString('utf8');
 		console.log(statement);
 
 		if (statement.includes("Backend Started")) {
-			console.log("start")
+			console.log("start");
 			createWindow()
 			// dialog.showOpenDialog({ properties: ['openFolder', 'multiSelections'] })
 			// .then(data => {

@@ -11,9 +11,9 @@ export class TraversalWrapperComponent implements OnInit {
   constructor() {}
 
   ngOnInit(): void {
-	this.parseDirectory(".").then(data => {
-		this.data = data
-	})
+    this.parseDirectory('C:\\Users\\Ben\\Documents\\Cheat Sheets').then((data) => {
+      this.data = data;
+    });
   }
 
   async parseDirectory(directory: string) {
@@ -26,6 +26,8 @@ export class TraversalWrapperComponent implements OnInit {
         body: formData,
       })
     ).json();
-    return data
+    return data;
   }
+
+
 }
