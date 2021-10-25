@@ -2,4 +2,7 @@ node_modules
 
 backend/.idea
 backend/.eclipse
+backend/.project
 backend/target
+backend/.classpath
+backend/.settings
