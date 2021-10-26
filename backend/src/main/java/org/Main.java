@@ -67,11 +67,6 @@ public class Main {
             return new JSONObject(new Driver(directory).parse());
         });
 
-        app.get("/parseDirectory/{directory}", ctx -> {
-            ctx.setResponseType(MediaType.json);
-            return new JSONObject(new Driver(ctx.path("directory").value()).parse());
-        });
-
         app.get("/test", ctx -> {
             ctx.setResponseType(MediaType.json);
             return new JSONObject(new Driver("C:\\Users\\Ben\\Documents\\Cheat Sheets\\").parse());

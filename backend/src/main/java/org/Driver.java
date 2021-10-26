@@ -43,21 +43,19 @@ public class Driver {
             fileDict.put(f.getName(), f.length());
         }
 
-        for(HashMap.Entry<String, HashMap> hm: directoryDict.entrySet()){
+        for (HashMap.Entry<String, HashMap> hm : directoryDict.entrySet()) {
             totalSize += new Long((String) ((HashMap) hm.getValue().get("::meta::")).get("size"));
         }
 
+
         directoryDict.put("::files::", fileDict);
-
-
-
 
         HashMap<String, String> meta = new HashMap<String, String>();
         meta.put("size", String.valueOf(totalSize));
-        meta.put("htmlId", "files"+ Math.random()*900000);
+        meta.put("htmlId", "files" + Math.random() * 900000);
 
 
-//        directoryDict.put("::meta::", meta);
+        directoryDict.put("::meta::", meta);
 
         return directoryDict;
     }
