@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+<svg
+    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns="http://www.w3.org/2000/svg"
+    xmlns:cc="http://web.resource.org/cc/"
+    xmlns:dc="http://purl.org/dc/elements/1.1/"
+    xmlns:sodipodi="http://inkscape.sourceforge.net/DTD/sodipodi-0.dtd"
+    xmlns:svg="http://www.w3.org/2000/svg"
+    xmlns:ns1="http://sozi.baierouge.fr"
+    xmlns:xlink="http://www.w3.org/1999/xlink"
+    id="svg1468"
+    sodipodi:docname="mag3.svg"
+    viewBox="0 0 187.5 187.5"
+    sodipodi:version="0.32"
+    version="1.0"
+    y="0"
+    x="0"
+    inkscape:version="0.42"
+    sodipodi:docbase="C:\Documents and Settings\Jarno\Omat tiedostot\vanhasta\opencliparts\omat\symbols"
+  >
+  <sodipodi:namedview
+      id="base"
+      bordercolor="#666666"
+      inkscape:pageshadow="2"
+      inkscape:window-width="640"
+      pagecolor="#ffffff"
+      inkscape:zoom="1.8346667"
+      borderopacity="1.0"
+      inkscape:current-layer="svg1468"
+      inkscape:cx="93.750000"
+      inkscape:cy="93.750000"
+      inkscape:window-height="480"
+      inkscape:pageopacity="0.0"
+  />
+  <g
+      id="layer1"
+    >
+    <g
+        id="g2530"
+        transform="translate(-278.89 -680.61)"
+      >
+      <rect
+          id="rect2488"
+          style="stroke-linejoin:round;stroke:#000000;stroke-linecap:round;stroke-width:3.3857;fill:#ffffff"
+          rx="3.7611"
+          ry="3.7611"
+          transform="rotate(24.33)"
+          width="15.044"
+          y="555.72"
+          x="642.53"
+          height="58.673"
+      />
+      <path
+          id="path2490"
+          style="stroke-linejoin:round;stroke:#000000;stroke-linecap:round;stroke-width:4.501;fill:#ffffff"
+          transform="matrix(.75221 0 0 .75221 30.84 292.89)"
+          d="m502 603.36a41 41 0 1 1 -82 0 41 41 0 1 1 82 0z"
+      />
+      <path
+          id="path2492"
+          style="fill-rule:evenodd;fill:#000000"
+          d="m355.31 739.82s2-11.03 12.53-15.54 22.72 0.83 22.72 0.83-12.69 1.5-20.22 4.51c-7.52 3.01-15.03 8.7-15.03 10.2z"
+      />
+      <path
+          id="path2474"
+          style="fill:#000000"
+          d="m375.06 758.83v-9.42h-9.35v-3.94h9.35v-9.35h3.98v9.35h9.36v3.94h-9.36v9.42h-3.98"
+      />
+    </g
+    >
+  </g
+  >
+  <metadata
+    >
+    <rdf:RDF
+      >
+      <cc:Work
+        >
+        <dc:format
+          >image/svg+xml</dc:format
+        >
+        <dc:type
+            rdf:resource="http://purl.org/dc/dcmitype/StillImage"
+        />
+        <cc:license
+            rdf:resource="http://creativecommons.org/licenses/publicdomain/"
+        />
+        <dc:publisher
+          >
+          <cc:Agent
+              rdf:about="http://openclipart.org/"
+            >
+            <dc:title
+              >Openclipart</dc:title
+            >
+          </cc:Agent
+          >
+        </dc:publisher
+        >
+        <dc:title
+          >Magnify 3 icon</dc:title
+        >
+        <dc:date
+          >2006-12-26T00:00:00</dc:date
+        >
+        <dc:description
+        />
+        <dc:source
+          >https://openclipart.org/detail/24602/-by--24602</dc:source
+        >
+        <dc:creator
+          >
+          <cc:Agent
+            >
+            <dc:title
+              >Anonymous</dc:title
+            >
+          </cc:Agent
+          >
+        </dc:creator
+        >
+      </cc:Work
+      >
+      <cc:License
+          rdf:about="http://creativecommons.org/licenses/publicdomain/"
+        >
+        <cc:permits
+            rdf:resource="http://creativecommons.org/ns#Reproduction"
+        />
+        <cc:permits
+            rdf:resource="http://creativecommons.org/ns#Distribution"
+        />
+        <cc:permits
+            rdf:resource="http://creativecommons.org/ns#DerivativeWorks"
+        />
+      </cc:License
+      >
+    </rdf:RDF
+    >
+  </metadata
+  >
+</svg
+>
