@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
 // import * as Electron from 'electron'
-import { ipcRenderer } from 'electron';
 
 // const { remote } = require('electron');
 // const mainProcess = remote.require('./main.js');
@@ -17,22 +16,31 @@ export class TraversalWrapperComponent implements OnInit {
   constructor() {}
 
   ngOnInit(): void {
-    if ((<any>window).require) {
-      try {
-        const ipc = (<any>window).require('electron').ipcRenderer;
-        ipc.send('customChannel', 'this is a test');
-      } catch (error) {
-        throw error;
-      }
-    } else {
-      console.warn('Could not load electron ipc');
-    }
 
-    this.parseDirectoryTest('C:\\Users\\Ben\\Documents\\Cheat Sheets').then(
-      (data) => {
-        this.data = data;
-      }
-    );
+
+
+
+    // this.parseDirectory('C:\\Users\\Ben\\Documents\\Cheat Sheets').then(
+    //   (data) => {
+    //     this.data = data;
+    //   }
+    // );
+  }
+
+
+  async openDrive(){
+	fetch('http://localhost:39393/')
+	.then(response => response.json())
+	.then(data => {
+		console.log(data)
+		if(!data['Error']){
+			this.parseDirectory(data.filePath).then(
+				(data) => {
+				  this.data = data;
+				}
+			  );
+		}
+	})
   }
 
   async parseDirectory(directory: string) {
@@ -52,12 +60,7 @@ export class TraversalWrapperComponent implements OnInit {
     const formData = new FormData();
     formData.append('directory', directory);
 
-    let data = await (
-      await fetch('http://localhost:18989/test/', {
-        method: 'post',
-        body: formData,
-      })
-    ).json();
+    let data = await (await fetch('http://localhost:18989/test')).json();
     return data;
   }
 }
