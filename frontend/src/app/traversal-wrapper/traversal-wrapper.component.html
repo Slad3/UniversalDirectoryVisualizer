@@ -1,13 +1,13 @@
 <div class="divider py-1 bg-dark"></div>
-<button id="openDriveButton" (click)="this.openDrive()"><span class="openDrive"></span></button>
-<button><span class="refresh"></span></button>
-<button><span class="openItem"></span></button>
-<button><span class="copyPath"></span></button>
-<button><span class="explorer"></span></button>
-<button><span class="openCMD"></span></button>
-<button><span class="refreshSelected"></span></button>
-<button><span class="delete"></span></button>
-<button><span class="properties"></span></button>
+<button id="openDriveButton" (click)="this.openDrive()" title = "Open Drive"><span class="openDrive"></span></button>
+<button title = "Refresh"><span class="refresh"></span></button>
+<button title = "Open Item"><span class="openItem"></span></button>
+<button title = "Copy Path"><span class="copyPath"></span></button>
+<button title = "Open Explorer"><span class="explorer"></span></button>
+<button title = "Open CMD"><span class="openCMD"></span></button>
+<button title = "Refresh Selected"><span class="refreshSelected"></span></button>
+<button title = "Delete Item"><span class="delete"></span></button>
+<button title = "Properties"><span class="properties"></span></button>
   <div class="divider py-1 bg-dark"></div>
 <visualization *ngIf="data !== undefined" [data]="this.data">
 </visualization>
