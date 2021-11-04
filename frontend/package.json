@@ -11,7 +11,9 @@
   },
   "private": true,
   "dependencies": {
+    "@angular/animation": "^4.0.0-beta.8",
     "@angular/animations": "~11.2.14",
+    "@angular/cdk": "^13.0.0",
     "@angular/common": "~11.2.14",
     "@angular/compiler": "~11.2.14",
     "@angular/core": "~11.2.14",
@@ -20,6 +22,7 @@
     "@angular/platform-browser-dynamic": "~11.2.14",
     "@angular/router": "~11.2.14",
     "electron": "^15.3.0",
+    "ngx-spinner": "^12.0.0",
     "rxjs": "~6.6.0",
     "tslib": "^2.0.0",
     "zone.js": "~0.11.3"

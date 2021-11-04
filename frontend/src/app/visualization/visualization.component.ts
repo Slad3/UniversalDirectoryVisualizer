@@ -6,8 +6,6 @@ import {
   ViewEncapsulation,
 } from '@angular/core';
 
-
-
 @Component({
   selector: 'visualization',
   templateUrl: './visualization.component.html',
@@ -49,8 +47,13 @@ export class VisualizationComponent implements OnInit {
   setId(inputObject: string, list: any) {
     let input = inputObject[0];
     if (input === '::files::') {
-      this.tempId = 'files' + list[0][1]['size'];
-    //   this.tempId = 'files' + list[0][1]['htmlId'];
+      if (!this.getMetaDirectory(list)) {
+        console.log(list);
+		this.tempId = 'filesUpper';
+      } else {
+        this.tempId = 'files' + this.getMetaDirectory(list)[1]['size'];
+      }
+      //   this.tempId = 'files' + list[0][1]['htmlId'];
       return this.tempId;
     }
     input = input.replace(' ', '');
@@ -60,5 +63,12 @@ export class VisualizationComponent implements OnInit {
     this.tempId = input;
 
     return input;
+  }
+
+  getMetaDirectory(list: Array<any>) {
+    for (let item of list) {
+      if (item[0] == '::meta::') return item;
+    }
+    return undefined;
   }
 }

@@ -1,7 +1,8 @@
 const { app, BrowserView, BrowserWindow, autoUpdater, dialog, ipcMain, ipcRenderer, contextBridge } = require('electron')
 const { exit, chdir, cwd } = require('process')
 
-const child_process = require('child_process')
+const child_process = require('child_process');
+const { start } = require('repl');
 const spawn = child_process.spawn
 
 
@@ -9,7 +10,9 @@ var javaProcess;
 
 function createWindow() {
 	const win = new BrowserWindow({
-		width: 1280, height: 800})
+		width: 1280, height: 800,
+		autoHideMenuBar: true,
+	})
 
 	__dirname = __dirname.substr(0, __dirname.length - "public".length) + "public"
 
@@ -26,7 +29,7 @@ app.whenReady().then(() => {
 	destroyCurrentServer()
 	javaProcess = spawn('java', ['-jar', 'src/server/backend.jar']);
 	console.log(javaProcess.pid)
-	javaProcess.stdout.on('data', function (data) {
+	javaProcess.stdout.on('data', data => {
 		var statement = data.toString('utf8');
 
 		if (statement.includes("already in use")) {
@@ -40,27 +43,7 @@ app.whenReady().then(() => {
 			console.log("start");
 
 			require('@electron/remote/main').initialize()
-			createWindow()
-
-			const express = require('express')
-			const server = express()
-			const port = 39393
-
-			const asyncHandler = require('express-async-handler')
-			server.get('/', asyncHandler(async (req, res, next) => {
-				let data = await fileExplorerPopUp();
-
-				if (data.canceled) {
-					res.json({ "Error": "cancelled" })
-				}
-				
-				return res.json({"filePath": data['filePaths'][0]})
-
-			}))
-			server.listen(port, () => {
-				// console.log(`Example app listening at http://localhost:${port}`)
-			})
-
+			startNodeServer().then(() => { createWindow() })
 
 		}
 
@@ -109,18 +92,22 @@ async function fileExplorerPopUp() {
 	return dialog.showOpenDialog({ properties: ['openDirectory', 'multiSelections'] })
 }
 
-// contextBridge.exposeInMainWorld(
-// 	'electron',   //This will be exposed as window.electron in your remote app
-// 	{
-// 	  doThing: () => ipcRenderer.send('do-a-thing')
-// 	}
-//   )
+async function startNodeServer() {
+	const express = require('express')
+	const server = express()
+	const port = 39393
 
-// ipcMain.handle('some-name', async (event, someArgument) => {
-// 	return await dialog.showOpenDialog({ properties: ['openFolder', 'multiSelections'] })
-//   })
+	const asyncHandler = require('express-async-handler')
+	server.get('/', asyncHandler(async (req, res) => {
+		let data = await fileExplorerPopUp();
 
-// ipcMain.on('customChannel', (event, args) => {
-// 	console.log('event: ', event);
-// 	console.log('args: ', args);
-// });
+		if (!data || data.canceled) {
+			res.json({ "Error": "cancelled" })
+		}
+
+		return res.json({ "filePath": data['filePaths'][0] })
+
+	}))
+	await server.listen(port)
+	return
+}
