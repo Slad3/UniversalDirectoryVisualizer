@@ -4,7 +4,104 @@
   color="#FFF"
   fullScreen="false"
 ></ngx-spinner> -->
+<div class="divider py-1 bg-dark"></div>
 
+<div class="btn-group">
+	<button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+	  File
+	</button>
+	<div class="dropdown-menu">
+	  <a class="dropdown-item" (click)="this.openDrive()">Open</a>
+	  <div class="dropdown-divider"></div>
+	  <a class="dropdown-item" href="#">Refresh</a>
+	  <div class="dropdown-divider"></div>
+	  <a class="dropdown-item" href="#">Quit</a>
+	</div>
+  </div>
+  
+
+<div class="btn-group">
+	<button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+	  Edit
+	</button>
+	<div class="dropdown-menu">
+	  <a class="dropdown-item" href="#">Copy Path</a>
+	</div>
+  </div>
+  
+
+<div class="btn-group">
+	<button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+	  Clean Up
+	</button>
+	<div class="dropdown-menu">
+	  <a class="dropdown-item" href="#">Open</a>
+	  <div class="dropdown-divider">Explorer Here</div>
+	  <a class="dropdown-item" href="#">Command Prompt Here</a>
+	  <a class="dropdown-item" href="#">Delete (Recycle)</a>
+	  <a class="dropdown-item" href="#">Delete (Permanent)</a>
+	  <div class="dropdown-divider"></div>
+	  <a class="dropdown-item" href="#">Properties</a>
+	  <div class="dropdown-divider"></div>
+	  <a class="dropdown-item" href="#">Empty Recycle Bin</a>
+	  <div class="dropdown-divider"></div>
+	  <a class="dropdown-item" href="#">User Defined Cleanup</a>
+	</div>
+  </div>
+  
+
+<div class="btn-group">
+	<button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+	  Treemap
+	</button>
+	<div class="dropdown-menu">
+	  <a class="dropdown-item" href="#">Zoom in</a>
+	  <a class="dropdown-item" href="#">Zoom out</a>
+	  <a class="dropdown-item" href="#">Reselect Child</a>
+	  <a class="dropdown-item" href="#">Select Parent</a>
+	  <div class="dropdown-divider"></div>
+	  <a class="dropdown-item" href="#">Help With Treemaps</a>
+	</div>
+  </div>
+
+<div class="btn-group">
+	<button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+	  Report
+	</button>
+	<div class="dropdown-menu">
+	  <a class="dropdown-item" href="#">Send Mail to Owner</a>
+	</div>
+  </div>
+  
+
+<div class="btn-group">
+	<button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+	  Options
+	</button>
+	<div class="dropdown-menu">
+	  <a class="dropdown-item" href="#">Show Free Space</a>
+	  <a class="dropdown-item" href="#">Show Unknown</a>
+	  <div class="dropdown-divider"></div>
+	  <a class="dropdown-item" href="#">Show File Types</a>
+	  <a class="dropdown-item" href="#">Show Treemap</a>
+	  <a class="dropdown-item" href="#">Show Toolbar</a>
+	  <a class="dropdown-item" href="#">Show Statusbar</a>
+	  <div class="dropdown-divider"></div>
+	  <a class="dropdown-item" href="#">Configure...</a>
+	</div>
+  </div>
+  
+
+<div class="btn-group">
+	<button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+	  Help
+	</button>
+	<div class="dropdown-menu">
+	  <a class="dropdown-item" href="#">Help</a>
+	  <div class="dropdown-divider"></div>
+	  <a class="dropdown-item" href="#">About..</a>
+	</div>
+  </div>
 <div class="divider py-1 bg-dark"></div>
 <button id="openDriveButton" (click)="this.openDrive()"><span class="openDrive"></span></button>
 <button><span class="refresh"></span></button>
