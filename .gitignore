@@ -6,3 +6,5 @@ backend/.project
 backend/target
 backend/.classpath
 backend/.settings
+
+# src/public/*

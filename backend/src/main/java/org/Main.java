@@ -53,7 +53,6 @@ public class Main {
         });
 
         app.get("/getProcessId", ctx ->{
-
             ctx.setResponseType(MediaType.json);
             long pid = ProcessHandle.current().pid();
             return new JSONObject("{\"pid\": " + pid + "}");
