@@ -117,4 +117,29 @@
 	height: 52px;
 	width: 40px;
   }
+
+  span.zoomIn {
+	background-image: url('../../assets\images\zoomIn.svg');
+	background-size: contain;
+	cursor: pointer;
+	display: inline-block;
+	height: 52px;
+	width: 50px;
+	}
+span.zoomOut {
+	background-image: url('../../assets\images\zoomOut.svg');
+	background-size: contain;
+	cursor: pointer;
+	display: inline-block;
+	height: 52px;
+	width: 50px;
+	}
+span.help {
+	background-image: url('../../assets\images\help.svg');
+	background-size: contain;
+	cursor: pointer;
+	display: inline-block;
+	height: 52px;
+	width: 70px;
+	}
    
