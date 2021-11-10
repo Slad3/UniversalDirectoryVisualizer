@@ -30,8 +30,6 @@ public class Driver {
         HashMap<String, HashMap> directoryDict = new HashMap<>();
         HashMap<String, Long> fileDict = new HashMap<>();
 
-        // Total size of current file directory
-        long totalSize = 0;
 
         // Loop through directories and recursively go through children directories
         // Will just skip specific directories if any errors of opening directories
@@ -45,6 +43,9 @@ public class Driver {
             }
         }
 
+        // Total size of current file directory
+        long totalSize = 0;
+
         // File loop, gets file size and adds file name and length to Hash
         for (File f : files) {
             totalSize += f.length();
@@ -56,7 +57,6 @@ public class Driver {
             totalSize += new Long((String) ((HashMap) hm.getValue().get("::meta::")).get("size"));
         }
 
-
         // Adding meta information to current folder
         HashMap<String, String> meta = new HashMap<String, String>();
         meta.put("size", String.valueOf(totalSize));
@@ -67,7 +67,6 @@ public class Driver {
 
         return directoryDict;
     }
-
 
     // Function to return just the directories
     public File[] findDirectories(File root) {

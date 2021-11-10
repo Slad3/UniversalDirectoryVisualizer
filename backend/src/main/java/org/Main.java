@@ -34,6 +34,7 @@ public class Main {
         });
 
         app.post("/parseDirectory/", ctx -> {
+            ctx.setResponseType(MediaType.json);
             String directory;
             Formdata form = ctx.form();
             try {
@@ -43,7 +44,6 @@ public class Main {
                 return new JSONObject(Objects.requireNonNull(new HashMap().put("Error", "No directory found in form")));
             }
 
-            ctx.setResponseType(MediaType.json);
             return new JSONObject(new Driver(directory).parse());
         });
 

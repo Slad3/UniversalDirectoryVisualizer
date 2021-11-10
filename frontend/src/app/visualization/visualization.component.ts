@@ -48,21 +48,26 @@ export class VisualizationComponent implements OnInit {
     let input = inputObject[0];
     if (input === '::files::') {
       if (!this.getMetaDirectory(list)) {
-        console.log(list);
-		this.tempId = 'filesUpper';
+        this.tempId = 'filesUpper';
       } else {
-        this.tempId = 'files' + this.getMetaDirectory(list)[1]['size'];
+        this.tempId =this.getMetaDirectory(list)[1]['htmlId'];
+        this.tempId = this.tempId.split(".").join("");
       }
       //   this.tempId = 'files' + list[0][1]['htmlId'];
+
       return this.tempId;
     }
-    input = input.replace(' ', '');
-    input = input.replace('\\', '');
-    input = input.replace('"', '');
-    input = input.replace("'", '');
-    this.tempId = input;
-
-    return input;
+    input = input.split(' ').join('');
+    input = input.split('\\').join('');
+    input = input.split('"').join('');
+    input = input.split("'").join('');
+    input = input.split('[').join('');
+    input = input.split(']').join('');
+    input = input.split('{').join('');
+    input = input.split('}').join('');
+    input = input.split('-').join('');
+    this.tempId = 'ID' + input;
+    return this.tempId;
   }
 
   getMetaDirectory(list: Array<any>) {
