@@ -10,7 +10,7 @@
 						</span>
 						{{item[0]}}
 						<span *ngIf="this.isNumber(item[1])">
-						{{item[1]}}
+						{{this.convertSize(item[1])}}
 						</span>
 						<ul id="{{this.tempId}}" class="explorerList collapse"
 							*ngIf="this.getItems(item[1]).length > 0">
