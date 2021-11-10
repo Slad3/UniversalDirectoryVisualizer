@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { AppComponent } from '../app.component';
+
 
 
 @Component({
@@ -19,6 +21,9 @@ export class TraversalWrapperComponent implements OnInit {
     });
   }
 
+  closeApp(){
+    window.close()
+  }
 
   async openDrive() {
     // this.spinner.show();

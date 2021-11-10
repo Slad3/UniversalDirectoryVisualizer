@@ -1,4 +1,4 @@
-# UniversalDirectoryVisualizer
+# Universal Directory Visualizer
 
 
 Requires Nodejs and npm to run
