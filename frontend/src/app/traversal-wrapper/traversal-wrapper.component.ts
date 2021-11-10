@@ -14,9 +14,9 @@ export class TraversalWrapperComponent implements OnInit {
 	  ) {}
 
   ngOnInit(): void {
-    // this.parseDirectoryTest().then((data) => {
-    //   this.data = data;
-    // });
+    this.parseDirectoryTest().then((data) => {
+      this.data = data;
+    });
   }
 
 

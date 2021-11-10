@@ -22,6 +22,8 @@
     "@angular/platform-browser-dynamic": "~11.2.14",
     "@angular/router": "~11.2.14",
     "electron": "^15.3.0",
+    "electron-builder": "^22.13.1",
+    "install": "^0.13.0",
     "ngx-spinner": "^12.0.0",
     "rxjs": "~6.6.0",
     "tslib": "^2.0.0",

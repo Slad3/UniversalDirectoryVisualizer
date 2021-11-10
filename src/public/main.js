@@ -145,7 +145,6 @@ class VisualizationComponent {
         let input = inputObject[0];
         if (input === '::files::') {
             if (!this.getMetaDirectory(list)) {
-                console.log(list);
                 this.tempId = 'filesUpper';
             }
             else {
@@ -154,12 +153,17 @@ class VisualizationComponent {
             //   this.tempId = 'files' + list[0][1]['htmlId'];
             return this.tempId;
         }
-        input = input.replace(' ', '');
-        input = input.replace('\\', '');
-        input = input.replace('"', '');
-        input = input.replace("'", '');
-        this.tempId = input;
-        return input;
+        input = input.split(" ").join('');
+        input = input.split("\\").join('');
+        input = input.split('"').join('');
+        input = input.split("'").join('');
+        input = input.split("[").join('');
+        input = input.split("]").join('');
+        input = input.split("{").join('');
+        input = input.split("}").join('');
+        input = input.split("-").join('');
+        this.tempId = "ID" + input;
+        return this.tempId;
     }
     getMetaDirectory(list) {
         for (let item of list) {
@@ -504,6 +508,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+// import { NgxSpinnerService, NgxSpinnerModule } from 'ngx-spinner';
 class AppModule {
 }
 AppModule.ɵfac = function AppModule_Factory(t) { return new (t || AppModule)(); };

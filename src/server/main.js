@@ -6,7 +6,6 @@ const { start } = require('repl');
 const spawn = child_process.spawn
 
 
-var javaProcess;
 
 function createWindow() {
 	const win = new BrowserWindow({
@@ -19,7 +18,6 @@ function createWindow() {
 	chdir('src/public');
 	win.webContents.loadFile(__dirname + "/index.html")
 
-
 	// For opening the debugger inside electron
 	win.webContents.openDevTools()
 }
@@ -27,7 +25,7 @@ function createWindow() {
 app.whenReady().then(() => {
 
 	destroyCurrentServer()
-	javaProcess = spawn('java', ['-jar', 'src/server/backend.jar']);
+	var javaProcess = spawn('java', ['-jar', 'src/server/backend.jar']);
 	console.log(javaProcess.pid)
 	javaProcess.stdout.on('data', data => {
 		var statement = data.toString('utf8');
@@ -80,9 +78,7 @@ app.whenReady().then(() => {
 
 async function destroyCurrentServer() {
 	const axios = require('axios');
-
 	let pid = (await axios.get("http://localhost:18989/getProcessId")).data.pid
-
 	console.log(pid)
 	process.kill(pid)
 
