@@ -119,7 +119,7 @@ export class VisualizationComponent implements OnInit {
       return input.substring(extensionStart, extensionEnd);
     }
     
-    //Return "na" for non-files
-    return "na";
+    //Return "NoExtension" for non-files
+    return "NoExtension";
   }
 }
