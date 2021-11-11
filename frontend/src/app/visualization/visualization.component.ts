@@ -103,4 +103,23 @@ export class VisualizationComponent implements OnInit {
       return num + " bytes";
     }
   }
+
+  getFileEnding(inputObject: string) {
+    let input = inputObject[0];
+
+    //Check if this input contains an extension, marked by a '.' character
+    if (input.includes('.')) {  
+      //Get index of the '.' in the file name
+      let extensionStart = input.indexOf('.') + 1;
+
+      //Get length (aka last index) of file name
+      let extensionEnd = input.length;
+
+      //Return the string between the first '.' and the end of the file name
+      return input.substring(extensionStart, extensionEnd);
+    }
+    
+    //Return "na" for non-files
+    return "na";
+  }
 }
