@@ -1,66 +1,72 @@
 {
- "name": "universaldirectoryvisualizer",
- "version": "1.0.0",
- "description": "",
- "main": "src/server/main.js",
- "scripts": {
-  "test": "electron --trace-warnings .",
-  "start": "electron .",
-  "pack": "electron-builder --dir",
-  "dist": "electron-builder"
- },
- "repository": {
-  "type": "git",
-  "url": "git+https://github.com/Slad3/UniversalDirectoryVisualizer.git"
- },
- "author": "",
- "license": "MIT",
- "bugs": {
-  "url": "https://github.com/Slad3/UniversalDirectoryVisualizer/issues"
- },
- "homepage": "https://github.com/Slad3/UniversalDirectoryVisualizer#readme",
- "devDependencies": {
-  "electron": "^12.0.1",
-  "electron-builder": "^22.13.1"
- },
- "dependencies": {
-  "@electron/remote": "^2.0.1",
-  "axios": "^0.24.0",
-  "electron-reload": "^1.5.0",
-  "express": "^4.17.1",
-  "express-async-handler": "^1.2.0",
-  "install": "^0.13.0",
-  "port-pid": "0.0.7",
-  "tree-kill": "^1.2.2"
- },
- "build": {
-  "appId": "udv",
-  "mac": {
-   "category": "general"
-  },
-  "dmg": {
-   "contents": [
-    {
-     "x": 110,
-     "y": 150
-    },
-    {
-     "x": 240,
-     "y": 150,
-     "type": "link",
-     "path": "/Applications"
-    }
-   ]
-  },
-  "linux": {
-   "target": [
-    "AppImage",
-    "deb"
-   ]
-  },
-  "win": {
-   "target": "NSIS",
-   "icon": "build/icon.ico"
-  }
- }
+	"name": "universaldirectoryvisualizer",
+	"version": "1.0.0",
+	"description": "",
+	"main": "src/server/main.js",
+	"scripts": {
+		"test": "electron --trace-warnings .",
+		"start": "electron .",
+		"pack": "electron-builder --dir",
+		"dist": "electron-builder"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/Slad3/UniversalDirectoryVisualizer.git"
+	},
+	"author": "",
+	"license": "MIT",
+	"bugs": {
+		"url": "https://github.com/Slad3/UniversalDirectoryVisualizer/issues"
+	},
+	"homepage": "https://github.com/Slad3/UniversalDirectoryVisualizer#readme",
+	"devDependencies": {
+		"electron": "^12.0.1",
+		"electron-builder": "^22.13.1"
+	},
+	"dependencies": {
+		"@electron/remote": "^2.0.1",
+		"axios": "^0.24.0",
+		"electron-reload": "^1.5.0",
+		"express": "^4.17.1",
+		"express-async-handler": "^1.2.0",
+		"install": "^0.13.0"
+	},
+	"build": {
+		"appId": "udv",
+		"mac": {
+			"category": "general"
+		},
+		"dmg": {
+			"contents": [
+				{
+					"x": 110,
+					"y": 150
+				},
+				{
+					"x": 240,
+					"y": 150,
+					"type": "link",
+					"path": "/Applications"
+				}
+			]
+		},
+		"linux": {
+			"target": [
+				"AppImage",
+				"deb"
+			]
+		},
+		"win": {
+			"target": "NSIS",
+			"icon": "build/icon.ico"
+		},
+		"files": [
+			"**/*"
+		],
+		"extraFiles": [
+			"src/public",
+			"src/server"
+		],
+		"directories": {}
+	}
 }
