@@ -113,7 +113,7 @@ export class VisualizationComponent implements OnInit {
       let extensionStart = input.indexOf('.') + 1;
 
       //Get length (aka last index) of file name
-      let extensionEnd = input.length;
+      let extensionEnd = input.length - 1;
 
       //Return the string between the first '.' and the end of the file name
       return input.substring(extensionStart, extensionEnd);
@@ -122,4 +122,6 @@ export class VisualizationComponent implements OnInit {
     //Return "NoExtension" for non-files
     return "NoExtension";
   }
+
+
 }
