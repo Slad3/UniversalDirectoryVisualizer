@@ -81,26 +81,26 @@ export class VisualizationComponent implements OnInit {
     if(num > 1000000000000){
       num = num / 1000000000000;
       parseFloat(num.toFixed(2));
-      return num + " TB";
+      return num.toFixed(2) + " TB";
     }
     else if(num > 1000000000) {
       num = num / 1000000000;
       parseFloat(num.toFixed(2));
-      return num + " GB";
+      return num.toFixed(2) + " GB";
     }
     else if(num > 1000000) {
       num = num / 1000000;
       parseFloat(num.toFixed(2));
-      return num + " MB";
+      return num.toFixed(2) + " MB";
     }
     else if(num > 1000) {
       num = num / 1000;
       parseFloat(num.toFixed(2));
-      return num + " KB";
+      return num.toFixed(2) + " KB";
     }
     else {
       parseFloat(num.toFixed(2));
-      return num + " bytes";
+      return num.toFixed(2) + " bytes";
     }
   }
 
