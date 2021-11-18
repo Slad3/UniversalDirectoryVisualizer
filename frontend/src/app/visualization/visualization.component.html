@@ -1,32 +1,42 @@
-<div id="content" *ngIf="this.data !== undefined">
-	<div id="explorer">
-		<ng-template #recursiveListTmpl let-list="list">
-			<div *ngFor="let item of list">
-				<div *ngIf="item[0] !== '::meta::'">
-					<li class="" value="">
-						<span *ngIf="!this.isNumber(item[1])">
-							<a href="#{{this.setId(item, list)}}" class="btn btn-info" data-toggle="collapse">
-							</a>
-						</span>
-						{{item[0]}}
-						<span *ngIf="this.isNumber(item[1])">
-						{{item[1]}}
-						</span>
-						<ul id="{{this.tempId}}" class="explorerList collapse"
-							*ngIf="this.getItems(item[1]).length > 0">
-							<ng-container
-								*ngTemplateOutlet="recursiveListTmpl; context:{ list: this.getItems(item[1]) }">
-							</ng-container>
-						</ul>
-					</li>
+<div id="content" class="container" *ngIf="this.data !== undefined">
+	<div class="row">
+		<div id="explorer" class="col-sm-3">
+			<ng-template #recursiveListTmpl let-list="list">
+				<div *ngFor="let item of list">
+					<div *ngIf="this.showElement(item)">
+						<li class="" value="">
+							<span *ngIf="!this.isNumber(item[1])">
+								<a href="#{{this.setId(item, list)}}" class="btn btn-info" data-toggle="collapse">V</a>
+							</span>
+							{{item[0]}}
+							<span *ngIf="this.isNumber(item[1])">
+								{{this.convertSize(item[1])}}
+							</span>
+							<span>
+							</span>
+							<ul id="{{this.tempId}}" class="explorerList collapse"
+								*ngIf="this.getItems(item[1]).length > 0">
+								<ng-container
+									*ngTemplateOutlet="recursiveListTmpl; context:{ list: this.getItems(item[1]) }">
+								</ng-container>
+							</ul>
+						</li>
+					</div>
 				</div>
-			</div>
-		</ng-template>
-		<ul class="explorerList">
-			<ng-container *ngTemplateOutlet="recursiveListTmpl; context:{list: this.getItems(this.data)}">
-			</ng-container>
-		</ul>
+			</ng-template>
+
+
+			<ul class="explorerList">
+				<ng-container *ngTemplateOutlet="recursiveListTmpl; context:{list: this.getItems(this.data)}">
+				</ng-container>
+			</ul>
+		</div>
 	</div>
+
+
+	<div id="fileTypes" class="col-sm-3">
+	</div>
+
 	<div id="blocks">
 	</div>
 </div>

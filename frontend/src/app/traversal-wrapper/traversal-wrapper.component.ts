@@ -16,9 +16,11 @@ export class TraversalWrapperComponent implements OnInit {
 	  ) {}
 
   ngOnInit(): void {
+	if (location.host.toString() === 'localhost:4200') {
     this.parseDirectoryTest().then((data) => {
       this.data = data;
     });
+	}
   }
 
   closeApp(){

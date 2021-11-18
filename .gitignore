@@ -9,4 +9,4 @@ backend/target
 backend/.classpath
 backend/.settings
 
-# src/public/*
+src/public/*

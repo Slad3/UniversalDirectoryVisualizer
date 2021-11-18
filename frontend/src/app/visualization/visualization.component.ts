@@ -20,10 +20,13 @@ export class VisualizationComponent implements OnInit {
 
   tempId: string;
 
+  counter: number;
+
   ngOnInit(): void {
     console.log(this.data);
 
     this.fullObject = JSON.stringify(this.data);
+    this.counter = 0;
   }
 
   getItems(files: any) {
@@ -50,13 +53,32 @@ export class VisualizationComponent implements OnInit {
       if (!this.getMetaDirectory(list)) {
         this.tempId = 'filesUpper';
       } else {
-        this.tempId =this.getMetaDirectory(list)[1]['htmlId'];
-        this.tempId = this.tempId.split(".").join("");
+        this.tempId = this.getMetaDirectory(list)[1]['htmlId'];
+        this.tempId = this.tempId.split('.').join('');
       }
-      //   this.tempId = 'files' + list[0][1]['htmlId'];
 
       return this.tempId;
     }
+
+    // if (!this.getMetaDirectory(list)) {
+	// 	input = input.split(' ').join('');
+	// 	input = input.split('\\').join('');
+	// 	input = input.split('"').join('');
+	// 	input = input.split("'").join('');
+	// 	input = input.split('[').join('');
+	// 	input = input.split(']').join('');
+	// 	input = input.split('{').join('');
+	// 	input = input.split('}').join('');
+	// 	input = input.split('-').join('');
+	// 	// this.tempId = 'ID' + input + this.counter;
+	// 	this.tempId = 'ID' + input;
+    // } else {
+    //   this.tempId = this.getMetaDirectory(list)[1]['htmlId'];
+    //   this.tempId = this.tempId.split('.').join('');
+    // }
+
+    // return this.tempId;
+
     input = input.split(' ').join('');
     input = input.split('\\').join('');
     input = input.split('"').join('');
@@ -66,7 +88,11 @@ export class VisualizationComponent implements OnInit {
     input = input.split('{').join('');
     input = input.split('}').join('');
     input = input.split('-').join('');
+    // this.tempId = 'ID' + input + this.counter;
+
+	
     this.tempId = 'ID' + input;
+    this.counter++;
     return this.tempId;
   }
 
@@ -75,5 +101,59 @@ export class VisualizationComponent implements OnInit {
       if (item[0] == '::meta::') return item;
     }
     return undefined;
+  }
+
+  convertSize(num: number) {
+    if (num > 1000000000000) {
+      num = num / 1000000000000;
+      parseFloat(num.toFixed(2));
+      return num + ' TB';
+    } else if (num > 1000000000) {
+      num = num / 1000000000;
+      parseFloat(num.toFixed(2));
+      return num + ' GB';
+    } else if (num > 1000000) {
+      num = num / 1000000;
+      parseFloat(num.toFixed(2));
+      return num + ' MB';
+    } else if (num > 1000) {
+      num = num / 1000;
+      parseFloat(num.toFixed(2));
+      return num + ' KB';
+    } else {
+      parseFloat(num.toFixed(2));
+      return num + ' bytes';
+    }
+  }
+
+  getFileEnding(inputObject: string) {
+    let input = inputObject[0];
+
+    //Check if this input contains an extension, marked by a '.' character
+    if (input.includes('.')) {
+      //Get index of the '.' in the file name
+      let extensionStart = input.indexOf('.') + 1;
+
+      //Get length (aka last index) of file name
+      let extensionEnd = input.length;
+
+      //Return the string between the first '.' and the end of the file name
+      return input.substring(extensionStart, extensionEnd);
+    }
+
+    //Return "NoExtension" for non-files
+    return 'NoExtension';
+  }
+
+  showElement(element: any) {
+    if (element[0] === '::meta::') {
+      return false;
+    }
+
+    if (element[0] === '::files::' && this.getItems(element[1]).length < 1) {
+      return false;
+    }
+
+    return true;
   }
 }
