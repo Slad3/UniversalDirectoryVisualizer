@@ -22,7 +22,9 @@ const argv = key => {
 
 function createWindow() {
 	const win = new BrowserWindow({
-		width: 1280, height: 800,
+		width: 1280, 
+		height: 800,
+		icon: "frontend\\src\\assets\\images\\UDV_AppLogo.ico",
 		autoHideMenuBar: true,
 	})
 
