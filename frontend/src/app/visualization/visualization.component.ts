@@ -90,7 +90,7 @@ export class VisualizationComponent implements OnInit {
     input = input.split('-').join('');
     // this.tempId = 'ID' + input + this.counter;
 
-	
+
     this.tempId = 'ID' + input;
     this.counter++;
     return this.tempId;
@@ -107,22 +107,26 @@ export class VisualizationComponent implements OnInit {
     if (num > 1000000000000) {
       num = num / 1000000000000;
       parseFloat(num.toFixed(2));
-      return num + ' TB';
-    } else if (num > 1000000000) {
+      return num.toFixed(2) + " TB";
+    }
+    else if(num > 1000000000) {
       num = num / 1000000000;
       parseFloat(num.toFixed(2));
-      return num + ' GB';
-    } else if (num > 1000000) {
+      return num.toFixed(2) + " GB";
+    }
+    else if(num > 1000000) {
       num = num / 1000000;
       parseFloat(num.toFixed(2));
-      return num + ' MB';
-    } else if (num > 1000) {
+      return num.toFixed(2) + " MB";
+    }
+    else if(num > 1000) {
       num = num / 1000;
       parseFloat(num.toFixed(2));
-      return num + ' KB';
-    } else {
+      return num.toFixed(2) + " KB";
+    }
+    else {
       parseFloat(num.toFixed(2));
-      return num + ' bytes';
+      return num.toFixed(2) + " bytes";
     }
   }
 
@@ -135,7 +139,7 @@ export class VisualizationComponent implements OnInit {
       let extensionStart = input.indexOf('.') + 1;
 
       //Get length (aka last index) of file name
-      let extensionEnd = input.length;
+      let extensionEnd = input.length - 1;
 
       //Return the string between the first '.' and the end of the file name
       return input.substring(extensionStart, extensionEnd);
@@ -156,4 +160,6 @@ export class VisualizationComponent implements OnInit {
 
     return true;
   }
+
+
 }

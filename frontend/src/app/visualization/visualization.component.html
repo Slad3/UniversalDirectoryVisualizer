@@ -1,6 +1,8 @@
-<div id="content" class="container" *ngIf="this.data !== undefined">
-	<div class="row">
-		<div id="explorer" class="col-sm-3">
+<div id="content" class="container-fluid" *ngIf="this.data !== undefined">
+	<div id="topRow" class="row">
+		<div id="explorer" class="col-9" style="outline: 1px black solid">
+
+			<!-- Template form -->
 			<ng-template #recursiveListTmpl let-list="list">
 				<div *ngFor="let item of list">
 					<div *ngIf="this.showElement(item)">
@@ -22,21 +24,29 @@
 							</ul>
 						</li>
 					</div>
+
 				</div>
 			</ng-template>
 
 
+			<!-- The actual explorer list component -->
 			<ul class="explorerList">
 				<ng-container *ngTemplateOutlet="recursiveListTmpl; context:{list: this.getItems(this.data)}">
 				</ng-container>
 			</ul>
 		</div>
+
+		<div id="fileTypes" class="col-3" style="outline: 1px black solid">
+			<h1>File Types</h1>
+		</div>
 	</div>
 
 
-	<div id="fileTypes" class="col-sm-3">
+	<div class="row">
+		<div id="blocks" class="col-12" style="outline: 1px black solid">
+			<h1>Blocks</h1>
+		</div>
 	</div>
 
-	<div id="blocks">
-	</div>
+
 </div>

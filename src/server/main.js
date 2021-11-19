@@ -5,6 +5,19 @@ const child_process = require('child_process');
 const { start } = require('repl');
 const spawn = child_process.spawn
 
+const process = require('process');
+
+const argv = key => {
+	// Return true if the key exists and a value is defined
+	if (process.argv.includes(`--${key}`)) return true;
+
+	const value = process.argv.find(element => element.startsWith(`--${key}=`));
+
+	// Return null if the key does not exist and a value is not defined
+	if (!value) return null;
+
+	return value.replace(`--${key}=`, '');
+}
 
 
 function createWindow() {
@@ -13,10 +26,22 @@ function createWindow() {
 		autoHideMenuBar: true,
 	})
 
-	__dirname = __dirname.substr(0, __dirname.length - "public".length) + "public"
+	if (argv("test")) {
+		console.log("in dev")
+		__dirname = __dirname.substr(0, __dirname.length - "public".length) + "public"
 
-	chdir('src/public');
-	win.webContents.loadFile(__dirname + "/index.html")
+		chdir('src/public');
+		win.webContents.loadFile(__dirname + "/index.html")
+	}
+	else {
+		console.log("production")
+		resourceIndex = __dirname.indexOf("win-unpacked")
+		console.log(__dirname)
+		console.log("resource index: ", resourceIndex)
+		win.webContents.loadFile(__dirname.substr(0, resourceIndex + "win-unpacked/".length) + "/src/public/index.html")
+
+
+	}
 
 	// For opening the debugger inside electron
 	win.webContents.openDevTools()
@@ -40,7 +65,6 @@ app.whenReady().then(() => {
 		if (statement.includes("Backend Started")) {
 			console.log("start");
 
-			require('@electron/remote/main').initialize()
 			startNodeServer().then(() => { createWindow() })
 
 		}
@@ -81,7 +105,6 @@ async function destroyCurrentServer() {
 	let pid = (await axios.get("http://localhost:18989/getProcessId")).data.pid
 	console.log(pid)
 	process.kill(pid)
-
 }
 
 async function fileExplorerPopUp() {

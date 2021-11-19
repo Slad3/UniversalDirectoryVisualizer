@@ -6,6 +6,7 @@
 ></ngx-spinner> -->
 <div class="divider py-1 bg-dark"></div>
 
+<!-- This button group is for the files button drop down that allows the opening of a new drive or folder to visualize, refresh the visualization and the files, and a button to close the application -->
 <div class="btn-group">
 	<button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 	  File
@@ -18,8 +19,8 @@
 	  <a class="dropdown-item" (click)="this.closeApp()">Quit</a>
 	</div>
   </div>
-  
 
+<!-- This button dropdown is to copy the current file path to be able to edit the files in the operating system explorer-->
 <div class="btn-group">
 	<button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 	  Edit
@@ -29,7 +30,14 @@
 	</div>
   </div>
   
-
+<!-- It is a drop down button menu
+First option is to open the folder or file that is selected
+Second option is to explore the specific directory at the specific selected spot
+Third is to recycle the file
+Fourth is to permanently delete the file or folder
+Fifth is to change the properties of the program
+Sixth is to empty the recycling bin
+Last is to choose multiple different files or folder to delete and delete all of them at once-->
 <div class="btn-group">
 	<button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 	  Clean Up
@@ -49,7 +57,7 @@
 	</div>
   </div>
   
-
+<!-- This is different actions to zoom in or out of the file explorer folder selected, select a child or select the parent of the folder-->
 <div class="btn-group">
 	<button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 	  Treemap
@@ -73,7 +81,14 @@
 	</div>
   </div>
   
-
+<!-- Drop down button to change some of the programs options
+First is to show the amount of free space left on the drive
+Second is to show the unknown files on the drive with no file extension assignment
+Third is to show file types with the files and the size of all files of that type
+Fourth is to show the treemap
+Fifth is to show or hide the toolbar
+Sixth is to show the statusbar for the search
+Seventh is to do more configuration of the program and the looks of the program-->
 <div class="btn-group">
 	<button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 	  Options
@@ -91,7 +106,7 @@
 	</div>
   </div>
   
-
+<!-- This is the help button dropdown for more documentation help and an about to talk about the specific information about version of program and more-->
 <div class="btn-group">
 	<button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 	  Help

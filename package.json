@@ -5,7 +5,7 @@
 	"main": "src/server/main.js",
 	"scripts": {
 		"test": "electron --trace-warnings .",
-		"start": "electron .",
+		"start": "electron . --test",
 		"pack": "electron-builder --dir",
 		"dist": "electron-builder"
 	},
@@ -64,8 +64,8 @@
 			"**/*"
 		],
 		"extraFiles": [
-			"src/public",
-			"src/server"
+			"src/public/*",
+			"src/server/backend.jar"
 		],
 		"directories": {}
 	}
