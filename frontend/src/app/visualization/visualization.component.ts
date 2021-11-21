@@ -1,3 +1,11 @@
+/* eslint-disable array-callback-return */
+/* eslint-disable consistent-return */
+/* eslint-disable no-unused-vars */
+/* eslint-disable no-restricted-syntax */
+/* eslint-disable no-param-reassign */
+/* eslint-disable no-plusplus */
+/* eslint-disable class-methods-use-this */
+/* eslint-disable no-console */
 import {
   Component,
   Input,
@@ -11,12 +19,10 @@ import {
   templateUrl: './visualization.component.html',
   styleUrls: ['./visualization.component.css'],
 })
-export class VisualizationComponent implements OnInit {
+export default class VisualizationComponent implements OnInit {
   @Input() data: string;
 
   fullObject: {};
-
-  constructor() {}
 
   tempId: string;
 
@@ -29,12 +35,18 @@ export class VisualizationComponent implements OnInit {
     this.counter = 0;
   }
 
+  /*
+  * Function that gets the items of a file array
+  * @param any files - The file object
+  * @return files - The file obejct if it is an array
+  * @return temp - unsure what this is
+  */
   getItems(files: any) {
     if (Array.isArray(files)) {
       return files;
     }
 
-    let temp = Object.entries(files);
+    const temp = Object.entries(files);
     temp.sort((a, b) => {
       if (this.isNumber(a[1]) && this.isNumber(b[1])) {
         return Number(b[1]) - Number(a[1]);
@@ -43,17 +55,28 @@ export class VisualizationComponent implements OnInit {
     return temp;
   }
 
+  /*
+  * Function that checks if a given member is a Number
+  * @param any object - the object to check
+  * @return boolean - true if the passed object is a Number
+  */
   isNumber(object: any) {
     return Number.isInteger(object);
   }
 
+  /**
+   * Function that sets an identifier on an object
+   * @param inputObject - The object to be id'd
+   * @param list - Not sure what this is
+   * @returns - the temporary id for the object
+   */
   setId(inputObject: string, list: any) {
     let input = inputObject[0];
     if (input === '::files::') {
       if (!this.getMetaDirectory(list)) {
         this.tempId = 'filesUpper';
       } else {
-        this.tempId = this.getMetaDirectory(list)[1]['htmlId'];
+        this.tempId = this.getMetaDirectory(list)[1].htmlId;
         this.tempId = this.tempId.split('.').join('');
       }
 
@@ -61,17 +84,17 @@ export class VisualizationComponent implements OnInit {
     }
 
     // if (!this.getMetaDirectory(list)) {
-	// 	input = input.split(' ').join('');
-	// 	input = input.split('\\').join('');
-	// 	input = input.split('"').join('');
-	// 	input = input.split("'").join('');
-	// 	input = input.split('[').join('');
-	// 	input = input.split(']').join('');
-	// 	input = input.split('{').join('');
-	// 	input = input.split('}').join('');
-	// 	input = input.split('-').join('');
-	// 	// this.tempId = 'ID' + input + this.counter;
-	// 	this.tempId = 'ID' + input;
+    //   input = input.split(' ').join('');
+    //   input = input.split('\\').join('');
+    //   input = input.split('"').join('');
+    //   input = input.split("'").join('');
+    //   input = input.split('[').join('');
+    //   input = input.split(']').join('');
+    //   input = input.split('{').join('');
+    //   input = input.split('}').join('');
+    //   input = input.split('-').join('');
+    //   // this.tempId = 'ID' + input + this.counter;
+    //   this.tempId = 'ID' + input;
     // } else {
     //   this.tempId = this.getMetaDirectory(list)[1]['htmlId'];
     //   this.tempId = this.tempId.split('.').join('');
@@ -90,62 +113,75 @@ export class VisualizationComponent implements OnInit {
     input = input.split('-').join('');
     // this.tempId = 'ID' + input + this.counter;
 
-
-    this.tempId = 'ID' + input;
+    this.tempId = `ID${input}`;
     this.counter++;
     return this.tempId;
   }
 
+  /**
+   * Function that returns the meta information of a passed directory
+   * @param list - the array (file object) to get the meta directory of
+   * @returns item if ::meta:: is foundm, undefined if not
+   */
   getMetaDirectory(list: Array<any>) {
-    for (let item of list) {
-      if (item[0] == '::meta::') return item;
+    for (const item of list) {
+      if (item[0] === '::meta::') return item;
     }
     return undefined;
   }
 
+  /**
+   * Function that converts a number (of bytes) into the largest unit of bytes possible
+   * @param num - The number to convert
+   * @returns the converted number fixed to 2 decimal points
+   */
   convertSize(num: number) {
     if (num > 1000000000000) {
-      num = num / 1000000000000;
+      num /= 1000000000000;
       parseFloat(num.toFixed(2));
-      return num.toFixed(2) + " TB";
+      return `${num.toFixed(2)} TB`;
     }
-    else if(num > 1000000000) {
-      num = num / 1000000000;
+    if (num > 1000000000) {
+      num /= 1000000000;
       parseFloat(num.toFixed(2));
-      return num.toFixed(2) + " GB";
+      return `${num.toFixed(2)} GB`;
     }
-    else if(num > 1000000) {
-      num = num / 1000000;
+    if (num > 1000000) {
+      num /= 1000000;
       parseFloat(num.toFixed(2));
-      return num.toFixed(2) + " MB";
+      return `${num.toFixed(2)} MB`;
     }
-    else if(num > 1000) {
-      num = num / 1000;
+    if (num > 1000) {
+      num /= 1000;
       parseFloat(num.toFixed(2));
-      return num.toFixed(2) + " KB";
+      return `${num.toFixed(2)} KB`;
     }
-    else {
-      parseFloat(num.toFixed(2));
-      return num.toFixed(2) + " bytes";
-    }
+
+    parseFloat(num.toFixed(2));
+    return `${num.toFixed(2)} bytes`;
   }
 
+  /**
+   * Function that extracts the file-ending of a given file (delimited by '.')
+   * @param inputObject - object to get the ending of
+   * @returns the file ending
+   */
   getFileEnding(inputObject: string) {
-    let input = inputObject[0];
+    const input = inputObject[0];
 
-    //Check if this input contains an extension, marked by a '.' character
+    // Check if this input contains an extension, marked by a '.' character
     if (input.includes('.')) {
-      //Get index of the '.' in the file name
-      let extensionStart = input.indexOf('.') + 1;
+      // Get index of the '.' in the file name
+      const extensionStart = input.indexOf('.') + 1;
 
-      //Get length (aka last index) of file name
-      let extensionEnd = input.length - 1;
+      // Get length (aka last index) of file name
+      const extensionEnd = input.length - 1;
 
-      //Return the string between the first '.' and the end of the file name
+      // Return the string between the first '.' and the end of the file name
       return input.substring(extensionStart, extensionEnd);
     }
 
-    //Return "NoExtension" for non-files
+    // Return "NoExtension" for non-files
     return 'NoExtension';
   }
 
@@ -160,6 +196,4 @@ export class VisualizationComponent implements OnInit {
 
     return true;
   }
-
-
 }

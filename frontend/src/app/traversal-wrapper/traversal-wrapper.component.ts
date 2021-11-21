@@ -1,30 +1,27 @@
+/* eslint-disable no-console */
+/* eslint-disable no-restricted-globals */
+/* eslint-disable no-return-await */
+/* eslint-disable class-methods-use-this */
 import { Component, OnInit } from '@angular/core';
-import { AppComponent } from '../app.component';
-
-
 
 @Component({
   selector: 'traversal-wrapper',
   templateUrl: './traversal-wrapper.component.html',
   styleUrls: ['./traversal-wrapper.component.css'],
 })
-export class TraversalWrapperComponent implements OnInit {
+export default class TraversalWrapperComponent implements OnInit {
   data: {};
 
-  constructor(
-	//   private spinner: NgxSpinnerService
-	  ) {}
-
   ngOnInit(): void {
-	if (location.host.toString() === 'localhost:4200') {
-    this.parseDirectoryTest().then((data) => {
-      this.data = data;
-    });
-	}
+    if (location.host.toString() === 'localhost:4200') {
+      this.parseDirectoryTest().then((data) => {
+        this.data = data;
+      });
+    }
   }
 
-  closeApp(){
-    window.close()
+  closeApp() {
+    window.close();
   }
 
   async openDrive() {
@@ -33,9 +30,9 @@ export class TraversalWrapperComponent implements OnInit {
       .then((response) => response.json())
       .then((data) => {
         console.log(data);
-        if (!data['Error']) {
-          this.parseDirectory(data.filePath).then((data) => {
-            this.data = data;
+        if (!data.Error) {
+          this.parseDirectory(data.filePath).then((data_) => {
+            this.data = data_;
             // this.spinner.hide();
           });
         } else {
