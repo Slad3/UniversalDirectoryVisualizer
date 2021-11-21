@@ -35,6 +35,12 @@ export default class VisualizationComponent implements OnInit {
     this.counter = 0;
   }
 
+  /*
+  * Function that gets the items of a file array
+  * @param any files - The file object
+  * @return files - The file obejct if it is an array
+  * @return temp - unsure what this is
+  */
   getItems(files: any) {
     if (Array.isArray(files)) {
       return files;
@@ -49,10 +55,21 @@ export default class VisualizationComponent implements OnInit {
     return temp;
   }
 
+  /*
+  * Function that checks if a given member is a Number
+  * @param any object - the object to check
+  * @return boolean - true if the passed object is a Number
+  */
   isNumber(object: any) {
     return Number.isInteger(object);
   }
 
+  /**
+   * Function that sets an identifier on an object
+   * @param inputObject - The object to be id'd
+   * @param list - Not sure what this is
+   * @returns - the temporary id for the object
+   */
   setId(inputObject: string, list: any) {
     let input = inputObject[0];
     if (input === '::files::') {
@@ -101,6 +118,11 @@ export default class VisualizationComponent implements OnInit {
     return this.tempId;
   }
 
+  /**
+   * Function that returns the meta information of a passed directory
+   * @param list - the array (file object) to get the meta directory of
+   * @returns item if ::meta:: is foundm, undefined if not
+   */
   getMetaDirectory(list: Array<any>) {
     for (const item of list) {
       if (item[0] === '::meta::') return item;
@@ -108,6 +130,11 @@ export default class VisualizationComponent implements OnInit {
     return undefined;
   }
 
+  /**
+   * Function that converts a number (of bytes) into the largest unit of bytes possible
+   * @param num - The number to convert
+   * @returns the converted number fixed to 2 decimal points
+   */
   convertSize(num: number) {
     if (num > 1000000000000) {
       num /= 1000000000000;
@@ -134,6 +161,11 @@ export default class VisualizationComponent implements OnInit {
     return `${num.toFixed(2)} bytes`;
   }
 
+  /**
+   * Function that extracts the file-ending of a given file (delimited by '.')
+   * @param inputObject - object to get the ending of
+   * @returns the file ending
+   */
   getFileEnding(inputObject: string) {
     const input = inputObject[0];
 

@@ -7,19 +7,34 @@ import java.io.FileFilter;
 import java.util.HashMap;
 import java.util.Map;
 
-
 public class Driver {
     private final String url;
 
+    /**
+     * Constructor for direcotry parsing driver
+     * @param url - Path of directory to parse
+     */
     public Driver(String url) {
         this.url = url;
     }
 
+    
+    /** 
+     * Wrapper function for parseDirectory in case more functionality is requried in the future
+     * @return HashMap - The nested HashMap representation of the parsed directory
+     */
     // Will later return a JSON object
     public HashMap parse() {
         return parseDirectory(this.url);
     }
 
+    
+    /** 
+     * Function to parse a given directory and compress the data into a nested HashMap containing all 
+     * subdirectories/folder/files as well as the sizes for each item parsed
+     * @param directory - The path of the directory to be parsed
+     * @return HashMap - The nested HashMap representation of the parsed directory
+     */
     public HashMap parseDirectory(String directory) {
 
         // Data structures to hold the files and directories that java gives us from the backend
@@ -68,6 +83,12 @@ public class Driver {
         return directoryDict;
     }
 
+    
+    /** 
+     * Function to find all subdirectories/folders in a root directory
+     * @param root - The directory to find files in
+     * @return File[] - Array of all files in the root
+     */
     // Function to return just the directories
     public File[] findDirectories(File root) {
         return root.listFiles(new FileFilter() {
@@ -77,6 +98,12 @@ public class Driver {
         });
     }
 
+    
+    /** 
+     * Function to find all files in a given root directory/folder
+     * @param root - The directory to find subdirectories in
+     * @return File[] - Array of all subdirectories in the root
+     */
     // Function to return just the files
     public File[] findFiles(File root) {
         return root.listFiles(new FileFilter() {
