@@ -1,3 +1,11 @@
+/* eslint-disable array-callback-return */
+/* eslint-disable consistent-return */
+/* eslint-disable no-unused-vars */
+/* eslint-disable no-restricted-syntax */
+/* eslint-disable no-param-reassign */
+/* eslint-disable no-plusplus */
+/* eslint-disable class-methods-use-this */
+/* eslint-disable no-console */
 import {
   Component,
   Input,
@@ -11,12 +19,10 @@ import {
   templateUrl: './visualization.component.html',
   styleUrls: ['./visualization.component.css'],
 })
-export class VisualizationComponent implements OnInit {
+export default class VisualizationComponent implements OnInit {
   @Input() data: string;
 
   fullObject: {};
-
-  constructor() {}
 
   tempId: string;
 
@@ -34,7 +40,7 @@ export class VisualizationComponent implements OnInit {
       return files;
     }
 
-    let temp = Object.entries(files);
+    const temp = Object.entries(files);
     temp.sort((a, b) => {
       if (this.isNumber(a[1]) && this.isNumber(b[1])) {
         return Number(b[1]) - Number(a[1]);
@@ -53,7 +59,7 @@ export class VisualizationComponent implements OnInit {
       if (!this.getMetaDirectory(list)) {
         this.tempId = 'filesUpper';
       } else {
-        this.tempId = this.getMetaDirectory(list)[1]['htmlId'];
+        this.tempId = this.getMetaDirectory(list)[1].htmlId;
         this.tempId = this.tempId.split('.').join('');
       }
 
@@ -61,17 +67,17 @@ export class VisualizationComponent implements OnInit {
     }
 
     // if (!this.getMetaDirectory(list)) {
-	// 	input = input.split(' ').join('');
-	// 	input = input.split('\\').join('');
-	// 	input = input.split('"').join('');
-	// 	input = input.split("'").join('');
-	// 	input = input.split('[').join('');
-	// 	input = input.split(']').join('');
-	// 	input = input.split('{').join('');
-	// 	input = input.split('}').join('');
-	// 	input = input.split('-').join('');
-	// 	// this.tempId = 'ID' + input + this.counter;
-	// 	this.tempId = 'ID' + input;
+    //   input = input.split(' ').join('');
+    //   input = input.split('\\').join('');
+    //   input = input.split('"').join('');
+    //   input = input.split("'").join('');
+    //   input = input.split('[').join('');
+    //   input = input.split(']').join('');
+    //   input = input.split('{').join('');
+    //   input = input.split('}').join('');
+    //   input = input.split('-').join('');
+    //   // this.tempId = 'ID' + input + this.counter;
+    //   this.tempId = 'ID' + input;
     // } else {
     //   this.tempId = this.getMetaDirectory(list)[1]['htmlId'];
     //   this.tempId = this.tempId.split('.').join('');
@@ -90,62 +96,60 @@ export class VisualizationComponent implements OnInit {
     input = input.split('-').join('');
     // this.tempId = 'ID' + input + this.counter;
 
-
-    this.tempId = 'ID' + input;
+    this.tempId = `ID${input}`;
     this.counter++;
     return this.tempId;
   }
 
   getMetaDirectory(list: Array<any>) {
-    for (let item of list) {
-      if (item[0] == '::meta::') return item;
+    for (const item of list) {
+      if (item[0] === '::meta::') return item;
     }
     return undefined;
   }
 
   convertSize(num: number) {
     if (num > 1000000000000) {
-      num = num / 1000000000000;
+      num /= 1000000000000;
       parseFloat(num.toFixed(2));
-      return num.toFixed(2) + " TB";
+      return `${num.toFixed(2)} TB`;
     }
-    else if(num > 1000000000) {
-      num = num / 1000000000;
+    if (num > 1000000000) {
+      num /= 1000000000;
       parseFloat(num.toFixed(2));
-      return num.toFixed(2) + " GB";
+      return `${num.toFixed(2)} GB`;
     }
-    else if(num > 1000000) {
-      num = num / 1000000;
+    if (num > 1000000) {
+      num /= 1000000;
       parseFloat(num.toFixed(2));
-      return num.toFixed(2) + " MB";
+      return `${num.toFixed(2)} MB`;
     }
-    else if(num > 1000) {
-      num = num / 1000;
+    if (num > 1000) {
+      num /= 1000;
       parseFloat(num.toFixed(2));
-      return num.toFixed(2) + " KB";
+      return `${num.toFixed(2)} KB`;
     }
-    else {
-      parseFloat(num.toFixed(2));
-      return num.toFixed(2) + " bytes";
-    }
+
+    parseFloat(num.toFixed(2));
+    return `${num.toFixed(2)} bytes`;
   }
 
   getFileEnding(inputObject: string) {
-    let input = inputObject[0];
+    const input = inputObject[0];
 
-    //Check if this input contains an extension, marked by a '.' character
+    // Check if this input contains an extension, marked by a '.' character
     if (input.includes('.')) {
-      //Get index of the '.' in the file name
-      let extensionStart = input.indexOf('.') + 1;
+      // Get index of the '.' in the file name
+      const extensionStart = input.indexOf('.') + 1;
 
-      //Get length (aka last index) of file name
-      let extensionEnd = input.length - 1;
+      // Get length (aka last index) of file name
+      const extensionEnd = input.length - 1;
 
-      //Return the string between the first '.' and the end of the file name
+      // Return the string between the first '.' and the end of the file name
       return input.substring(extensionStart, extensionEnd);
     }
 
-    //Return "NoExtension" for non-files
+    // Return "NoExtension" for non-files
     return 'NoExtension';
   }
 
@@ -160,6 +164,4 @@ export class VisualizationComponent implements OnInit {
 
     return true;
   }
-
-
 }

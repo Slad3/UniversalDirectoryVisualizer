@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { TraversalWrapperComponent } from './traversal-wrapper.component';
@@ -8,9 +9,9 @@ describe('TraversalWrapperComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ TraversalWrapperComponent ]
+      declarations: [TraversalWrapperComponent],
     })
-    .compileComponents();
+      .compileComponents();
   });
 
   beforeEach(() => {
