@@ -13,6 +13,21 @@ span.folder {
 }
 
 .explorerList {
-  
   overflow-y: hidden;
+
+  list-style: none;
 }
+
+.explorerItem{
+	outline: 1px black dashed;
+	padding: 5px;
+
+
+	font-size: 20px;
+}
+
+.collapseButton{
+	background-color: black;
+	border-color: transparent;
+}
+

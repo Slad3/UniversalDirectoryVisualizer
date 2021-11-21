@@ -6,12 +6,12 @@
 			<ng-template #recursiveListTmpl let-list="list">
 				<div *ngFor="let item of list">
 					<div *ngIf="this.showElement(item)">
-						<li class="" value="">
+						<li class="explorerItem" value="">
 							<span *ngIf="!this.isNumber(item[1])">
-								<a href="#{{this.setId(item, list)}}" class="btn btn-info" data-toggle="collapse">V</a>
+								<a href="#{{this.setId(item, list)}}" class="btn btn-info collapseButton" data-toggle="collapse">V</a>
 							</span>
 							{{item[0]}}
-							<span *ngIf="this.isNumber(item[1])">
+							<span class="sizeNumber" *ngIf="this.isNumber(item[1])">
 								{{this.convertSize(item[1])}}
 							</span>
 							<span>
