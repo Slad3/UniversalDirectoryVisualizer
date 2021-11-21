@@ -4,6 +4,8 @@
 
 			<!-- Template form -->
 			<ng-template #recursiveListTmpl let-list="list">
+
+				<!-- asdfasdf -->
 				<div *ngFor="let item of list">
 					<div *ngIf="this.showElement(item)">
 						<li class="explorerItem" value="">
@@ -12,14 +14,17 @@
 									data-toggle="collapse">V</a>
 							</span>
 							{{item[0]}}
+
+
+							<!-- File numbers -->
 							<span class="sizeNumber" *ngIf="this.isNumber(item[1])">
 								{{this.convertSize(item[1])}}
 							</span>
 							<span class="sizeNumber" *ngIf="this.getFolderSize(item[1])">
 								{{this.getFolderSize(item[1])}}
 							</span>
-							<span>
-							</span>
+
+
 							<ul id="{{this.tempId}}" class="explorerList collapse"
 								*ngIf="this.getItems(item[1]).length > 0">
 								<ng-container

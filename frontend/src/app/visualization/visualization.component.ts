@@ -158,7 +158,7 @@ export class VisualizationComponent implements OnInit {
     }
 
     parseFloat(num.toFixed(2));
-    return `${num.toFixed(2)} bytes`;
+    return `${num} bytes`;
   }
 
   /**
@@ -167,7 +167,7 @@ export class VisualizationComponent implements OnInit {
    * @returns the file ending
    */
   getFileEnding(inputObject: string) {
-    const input = inputObject[0];
+    const input = inputObject;
 
     // Check if this input contains an extension, marked by a '.' character
     if (input.includes('.')) {
@@ -175,14 +175,14 @@ export class VisualizationComponent implements OnInit {
       const extensionStart = input.indexOf('.') + 1;
 
       // Get length (aka last index) of file name
-      const extensionEnd = input.length - 1;
+      const extensionEnd = input.length;
 
       // Return the string between the first '.' and the end of the file name
       return input.substring(extensionStart, extensionEnd);
     }
 
     // Return "NoExtension" for non-files
-    return 'NoExtension';
+    return undefined;
   }
 
   showElement(element: any) {
