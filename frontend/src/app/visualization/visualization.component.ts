@@ -36,11 +36,11 @@ export class VisualizationComponent implements OnInit {
   }
 
   /*
-  * Function that gets the items of a file array
-  * @param any files - The file object
-  * @return files - The file obejct if it is an array
-  * @return temp - unsure what this is
-  */
+   * Function that gets the items of a file array
+   * @param any files - The file object
+   * @return files - The file obejct if it is an array
+   * @return temp - unsure what this is
+   */
   getItems(files: any) {
     if (Array.isArray(files)) {
       return files;
@@ -56,10 +56,10 @@ export class VisualizationComponent implements OnInit {
   }
 
   /*
-  * Function that checks if a given member is a Number
-  * @param any object - the object to check
-  * @return boolean - true if the passed object is a Number
-  */
+   * Function that checks if a given member is a Number
+   * @param any object - the object to check
+   * @return boolean - true if the passed object is a Number
+   */
   isNumber(object: any) {
     return Number.isInteger(object);
   }
@@ -195,5 +195,20 @@ export class VisualizationComponent implements OnInit {
     }
 
     return true;
+  }
+
+  getFolderSize(item) {
+    if (this.isNumber(item)) return false;
+
+    if (item['::meta::']) {
+      return this.convertSize(item['::meta::']['size']);
+    } else {
+      let total = 0;
+      item = this.getItems(item);
+      for (let i of item) {
+        total += i[1];
+      }
+      return this.convertSize(total);
+    }
   }
 }

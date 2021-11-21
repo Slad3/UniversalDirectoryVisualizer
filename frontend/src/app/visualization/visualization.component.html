@@ -8,11 +8,15 @@
 					<div *ngIf="this.showElement(item)">
 						<li class="explorerItem" value="">
 							<span *ngIf="!this.isNumber(item[1])">
-								<a href="#{{this.setId(item, list)}}" class="btn btn-info collapseButton" data-toggle="collapse">V</a>
+								<a href="#{{this.setId(item, list)}}" class="btn btn-info collapseButton"
+									data-toggle="collapse">V</a>
 							</span>
 							{{item[0]}}
 							<span class="sizeNumber" *ngIf="this.isNumber(item[1])">
 								{{this.convertSize(item[1])}}
+							</span>
+							<span class="sizeNumber" *ngIf="this.getFolderSize(item[1])">
+								{{this.getFolderSize(item[1])}}
 							</span>
 							<span>
 							</span>
