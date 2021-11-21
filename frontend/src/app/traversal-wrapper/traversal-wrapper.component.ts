@@ -9,7 +9,7 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './traversal-wrapper.component.html',
   styleUrls: ['./traversal-wrapper.component.css'],
 })
-export default class TraversalWrapperComponent implements OnInit {
+export class TraversalWrapperComponent implements OnInit {
   data: {};
 
   ngOnInit(): void {
@@ -18,7 +18,7 @@ export default class TraversalWrapperComponent implements OnInit {
         this.data = data;
       });
     }
-  }
+  } 
 
   closeApp() {
     window.close();

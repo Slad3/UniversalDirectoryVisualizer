@@ -16,11 +16,12 @@ span.folder {
   overflow-y: hidden;
 
   list-style: none;
+  
 }
 
 .explorerItem{
-	outline: 1px black dashed;
-	padding: 5px;
+	outline: 1px black dotted;
+	padding: 7px;
 
 
 	font-size: 20px;
@@ -29,5 +30,10 @@ span.folder {
 .collapseButton{
 	background-color: black;
 	border-color: transparent;
+}
+
+.sizeNumber{
+	float: right;
+	margin-right: 50px;
 }
 

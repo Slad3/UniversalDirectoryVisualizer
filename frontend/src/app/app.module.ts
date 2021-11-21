@@ -6,12 +6,12 @@ import { AppComponent } from './app.component';
 import { VisualizationComponent } from './visualization/visualization.component';
 import { TraversalWrapperComponent } from './traversal-wrapper/traversal-wrapper.component';
 // import { NgxSpinnerService, NgxSpinnerModule } from 'ngx-spinner';
-
+ 
 @NgModule({
   declarations: [
     AppComponent,
     VisualizationComponent,
-    TraversalWrapperComponent,
+    TraversalWrapperComponent
   ],
   imports: [
     BrowserModule,

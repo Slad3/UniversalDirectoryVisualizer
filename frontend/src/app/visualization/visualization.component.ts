@@ -19,7 +19,7 @@ import {
   templateUrl: './visualization.component.html',
   styleUrls: ['./visualization.component.css'],
 })
-export default class VisualizationComponent implements OnInit {
+export class VisualizationComponent implements OnInit {
   @Input() data: string;
 
   fullObject: {};
