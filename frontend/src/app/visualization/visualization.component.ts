@@ -185,6 +185,11 @@ export class VisualizationComponent implements OnInit {
     return undefined;
   }
 
+  /**
+   * Function that checks if an element should be shown
+   * @param element - Element of JSON object
+   * @returns true if element should be shown, false if not
+   */
   showElement(element: any) {
     if (element[0] === '::meta::') {
       return false;
@@ -197,6 +202,11 @@ export class VisualizationComponent implements OnInit {
     return true;
   }
 
+  /**
+   * Function that gets the total size of a given folder
+   * @param item - Folder object
+   * @returns The total folder size
+   */
   getFolderSize(item) {
     if (this.isNumber(item)) return false;
 
