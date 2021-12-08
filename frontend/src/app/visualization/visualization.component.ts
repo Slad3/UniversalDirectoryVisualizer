@@ -1,19 +1,9 @@
-/* eslint-disable array-callback-return */
-/* eslint-disable consistent-return */
-/* eslint-disable no-unused-vars */
-/* eslint-disable no-restricted-syntax */
-/* eslint-disable no-param-reassign */
-/* eslint-disable no-plusplus */
-/* eslint-disable class-methods-use-this */
-/* eslint-disable no-console */
+
 import {
   Component,
   Input,
   OnInit,
-  SimpleChange,
-  ViewEncapsulation,
 } from '@angular/core';
-
 @Component({
   selector: 'visualization',
   templateUrl: './visualization.component.html',
@@ -28,11 +18,46 @@ export class VisualizationComponent implements OnInit {
 
   counter: number;
 
+    fileTypes = [1, 2, 3, 4];  
+//   fileTypes = { 1: 1, 2: 2, 3: 3, 4: 4 };
+
+  done: boolean;
+
   ngOnInit(): void {
+    this.done = false;
     console.log(this.data);
 
     this.fullObject = JSON.stringify(this.data);
     this.counter = 0;
+    // this.fileTypes = [1, 2, 3, 4];
+    console.log(this.fileTypes);
+
+    // this.fileTypes = this.consolidateFileTypes();
+
+    // this.fileTypes = [
+    //   ['pdf', 192733251],
+    //   ['ipynb', 22409507],
+    //   ['png', 12063962],
+    //   ['jpg', 6171543],
+    //   ['csv', 1865319],
+    //   ['tgz', 409488],
+    //   ['txt', 86907],
+    //   ['py', 75263],
+    //   ['md', 26957],
+    //   ['h', 20807],
+    //   ['idea_::files::_workspace.xml', 2724],
+    //   ['yml', 1922],
+    //   ['idea_::files::_handson-ml-master.iml', 347],
+    //   ['idea_::files::_misc.xml', 317],
+    //   ['idea_::files::_modules.xml', 293],
+    //   ['gitignore', 195],
+    //   ['idea_inspectionProfiles_::files::_profiles_settings.xml', 174],
+    //   ['idea_::files::_rSettings.xml', 151],
+    //   ['bash', 89],
+    //   ['env', 32],
+    // ];
+
+    this.done = true;
   }
 
   /*
@@ -210,5 +235,62 @@ export class VisualizationComponent implements OnInit {
       }
       return this.convertSize(total);
     }
+  }
+
+  jsonFlatter(data, previousKey, obj) {
+    obj = obj || {};
+    previousKey = previousKey || '';
+    Object.keys(data).map((key) => {
+      let newKey = `${previousKey}${previousKey ? '_' : ''}${key}`;
+      let _value = data[key];
+      let isArray = Array.isArray(_value);
+      if (typeof _value !== 'object' || isArray || _value == null) {
+        if (isArray) {
+          _value = JSON.stringify(_value);
+        } else if (_value == null) {
+          _value = 'null';
+        }
+        obj[newKey] = _value;
+      } else if (typeof _value === 'object') {
+        if (!Object.keys(_value).length) {
+          obj[newKey] = 'null';
+        } else {
+          return this.jsonFlatter(_value, newKey, obj);
+        }
+      }
+    });
+    return obj;
+  }
+
+  consolidateFileTypes() {
+    let items = this.getItems(
+      this.jsonFlatter(this.data, undefined, undefined)
+    );
+
+    let fileDict = {};
+
+    for (let item of items) {
+      if (String(item[0]).indexOf('::meta::') < 0) {
+        let fileExt = this.getFileEnding(item[0]);
+        if (fileExt) {
+          if (!fileDict[fileExt]) {
+            fileDict[fileExt] = item[1];
+          } else {
+            fileDict[fileExt] += item[1];
+          }
+        }
+      }
+    }
+
+    console.log('FileDict: ', fileDict);
+    // this.fileTypes = this.getItems(fileDict);
+    console.log('File types: ', this.fileTypes);
+    return this.getItems(fileDict);
+  }
+
+  temp(input: any) {
+    console.log('here');
+    console.log(input);
+    return true;
   }
 }
