@@ -289,3 +289,4 @@ export class VisualizationComponent implements OnInit {
     return true;
   }
 }
+// Nice
