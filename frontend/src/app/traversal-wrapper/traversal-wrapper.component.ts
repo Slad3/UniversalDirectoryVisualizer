@@ -24,6 +24,9 @@ export class TraversalWrapperComponent implements OnInit {
     window.close();
   }
 
+  /**
+   * Function that opens the selected drive and calls parseDirectory() with the given drive
+   */
   async openDrive() {
     // this.spinner.show();
     fetch('http://localhost:39393/')
@@ -41,6 +44,11 @@ export class TraversalWrapperComponent implements OnInit {
       });
   }
 
+/**
+   * Function that fetches the parsed JSON object and stores it in a variable. 
+   * @param directory - The directory selected as user input
+   * @returns JSON object with user directory
+   */
   async parseDirectory(directory: string) {
     const formData = new FormData();
     formData.append('directory', directory);
