@@ -1,4 +1,4 @@
-<div id="content" class="container-fluid" *ngIf="this.done">
+<div id="content" class="container-fluid">
 	<div id="topRow" class="row">
 		<div id="explorer" class="col-9" style="outline: 1px black solid">
 
@@ -43,19 +43,25 @@
 				<ng-container *ngTemplateOutlet="recursiveListTmpl; context:{list: this.getItems(this.data)}">
 				</ng-container>
 			</ul>
-			
 		</div>
 
 
 
-		<div id="fileTypesasdf" class="col-3" style="outline: 1px black solid">
+		<div id="fileTypes" class="col-3" style="outline: 1px black solid">
 			<h1>File Types</h1>
+<!-- 
+			<div>
+				<ul>
 
-			<ul>
-				<li *ngFor="let item of [0, 1, 2, 3, 4]">
-					<p>{{item}}</p>
-				</li>
-			</ul>
+					<li *ngFor="let item of this.fileTypes" [item]="item">
+						<div>
+							{{item}}
+						</div>
+					</li>
+
+
+				</ul>
+			</div> -->
 
 		</div>
 	</div>

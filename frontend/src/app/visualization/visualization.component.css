@@ -12,6 +12,11 @@ span.folder {
   overflow-y: scroll;
 }
 
+#fileTypes {
+	height: 50vh;
+	overflow-y: scroll;
+}
+
 .explorerList {
   overflow-y: hidden;
 

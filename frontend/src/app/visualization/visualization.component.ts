@@ -1,9 +1,4 @@
-
-import {
-  Component,
-  Input,
-  OnInit,
-} from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 @Component({
   selector: 'visualization',
   templateUrl: './visualization.component.html',
@@ -18,46 +13,19 @@ export class VisualizationComponent implements OnInit {
 
   counter: number;
 
-    fileTypes = [1, 2, 3, 4];  
-//   fileTypes = { 1: 1, 2: 2, 3: 3, 4: 4 };
+  fileTypes = [1, 2, 3, 4];
 
   done: boolean;
 
   ngOnInit(): void {
-    this.done = false;
     console.log(this.data);
 
     this.fullObject = JSON.stringify(this.data);
     this.counter = 0;
-    // this.fileTypes = [1, 2, 3, 4];
     console.log(this.fileTypes);
 
-    // this.fileTypes = this.consolidateFileTypes();
-
-    // this.fileTypes = [
-    //   ['pdf', 192733251],
-    //   ['ipynb', 22409507],
-    //   ['png', 12063962],
-    //   ['jpg', 6171543],
-    //   ['csv', 1865319],
-    //   ['tgz', 409488],
-    //   ['txt', 86907],
-    //   ['py', 75263],
-    //   ['md', 26957],
-    //   ['h', 20807],
-    //   ['idea_::files::_workspace.xml', 2724],
-    //   ['yml', 1922],
-    //   ['idea_::files::_handson-ml-master.iml', 347],
-    //   ['idea_::files::_misc.xml', 317],
-    //   ['idea_::files::_modules.xml', 293],
-    //   ['gitignore', 195],
-    //   ['idea_inspectionProfiles_::files::_profiles_settings.xml', 174],
-    //   ['idea_::files::_rSettings.xml', 151],
-    //   ['bash', 89],
-    //   ['env', 32],
-    // ];
-
-    this.done = true;
+    console.log(this.consolidateFileTypes());
+    this.dipslayFileTypes(this.consolidateFileTypes());
   }
 
   /*
@@ -281,11 +249,28 @@ export class VisualizationComponent implements OnInit {
         }
       }
     }
-
-    console.log('FileDict: ', fileDict);
     // this.fileTypes = this.getItems(fileDict);
     console.log('File types: ', this.fileTypes);
     return this.getItems(fileDict);
+    // return this.getItems(fileDict);
+  }
+
+  dipslayFileTypes(types: any) {
+    let fileTypesBlock = document.getElementById('fileTypes');
+
+    console.log(fileTypesBlock);
+
+    if (fileTypesBlock) {
+      for (let item of types) {
+        let tempDiv = document.createElement('div');
+
+        console.log(item);
+
+		item[1] = this.convertSize(item[1])
+        tempDiv.innerText = JSON.stringify(item);
+        fileTypesBlock.appendChild(tempDiv);
+      }
+    }
   }
 
   temp(input: any) {
