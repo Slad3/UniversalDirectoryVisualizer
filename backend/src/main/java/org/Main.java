@@ -63,13 +63,4 @@ public class Main {
 
         System.out.println("Backend Started");
     }
-
-
-    /** 
-    @Test
-    public void testSelfParse(){
-        Driver driver = new Driver("");
-    }
-
-    */
 }
