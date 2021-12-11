@@ -45,7 +45,7 @@ public class Main {
                 return new JSONObject(Objects.requireNonNull(new HashMap().put("Error", "No directory found in form")));
             }
 
-            return new JSONObject(new Driver(directory).parse());
+            return new JSONObject(new Driver(directory).parse(false));
         });
 
         app.get("/test", ctx -> {
@@ -64,14 +64,6 @@ public class Main {
         System.out.println("Backend Started");
     }
 
-    @Test
-    public void testBadParse(){
-        Driver emptyDriver = new Driver("");
-        assertEquals(null, emptyDriver.parse());
-
-        Driver badDriver = new Driver(":");
-        assertEquals(null, emptyDriver.parse());
-    }
 
     /** 
     @Test
