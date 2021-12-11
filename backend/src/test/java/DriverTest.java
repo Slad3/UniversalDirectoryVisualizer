@@ -17,8 +17,6 @@ public class DriverTest {
 //        Driver driver = new Driver(".");
         System.out.println(driver.parse());
 
-
-// ...
         long finish = System.currentTimeMillis();
         System.out.println((finish - start)/1000.0);
 
