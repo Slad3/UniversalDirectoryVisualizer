@@ -22,10 +22,9 @@ export class VisualizationComponent implements OnInit {
 
     this.fullObject = JSON.stringify(this.data);
     this.counter = 0;
-    console.log(this.fileTypes);
 
-    console.log(this.consolidateFileTypes());
     this.dipslayFileTypes(this.consolidateFileTypes());
+	this.parseBlocks()
   }
 
   /*
@@ -260,7 +259,6 @@ export class VisualizationComponent implements OnInit {
       }
     }
     // this.fileTypes = this.getItems(fileDict);
-    console.log('File types: ', this.fileTypes);
     return this.getItems(fileDict);
     // return this.getItems(fileDict);
   }
@@ -268,25 +266,98 @@ export class VisualizationComponent implements OnInit {
   dipslayFileTypes(types: any) {
     let fileTypesBlock = document.getElementById('fileTypes');
 
-    console.log(fileTypesBlock);
-
     if (fileTypesBlock) {
       for (let item of types) {
         let tempDiv = document.createElement('div');
-
-        console.log(item);
+		tempDiv.classList.add("typeBlock")
 
 		item[1] = this.convertSize(item[1])
-        tempDiv.innerText = JSON.stringify(item);
+
+		let extSpan = document.createElement("span");
+		extSpan.innerText = item[0];
+		extSpan.classList.add("typeExtension")
+		tempDiv.appendChild(extSpan);
+
+		tempDiv.innerHTML += " | "
+
+		let numSpan = document.createElement("span");
+		numSpan.innerText = item[1];
+		numSpan.className = "typeNumber"
+		tempDiv.appendChild(numSpan);
+
         fileTypesBlock.appendChild(tempDiv);
       }
     }
   }
 
-  temp(input: any) {
-    console.log('here');
-    console.log(input);
-    return true;
+
+  parseBlocks(){
+	let blocksDiv = document.getElementById("blocks");
+	let subBlock = this.parseFolder(this.data)[0]
+	console.log("sub block: ", subBlock)
+	blocksDiv.appendChild(subBlock);
+
   }
+
+  parseFolder(folderData: Object){
+
+	let folderDiv = document.createElement("span");
+	let folderSize = Number(folderData['::meta::'].size)
+	let folderFiles = this.getItems(folderData['::files::'])
+	let folderItems = this.getItems(folderData)
+
+	console.log("Folder Size: ", folderSize)
+	console.log("Folder files: ", folderFiles)
+
+	let builtSubFolders = []
+
+	for(let item of folderItems){
+		if(String(item[0]).substring(0, 2) !== "::"){
+			let subFolder = this.parseFolder(item[1])
+			let percent = (subFolder[1]* 100 / folderSize) 
+			subFolder[0].style.width = percent + "%";
+			// subFolder[0].style.height = "100%"
+			subFolder[0].style.height = "20px"
+			subFolder[0].style.outline = "black 2px solid"
+			
+			builtSubFolders.push(subFolder[0])
+		}
+	}
+
+ 
+
+	console.log("Built sub Folders: ", builtSubFolders)
+
+	let fileDivs = []
+
+	for(let file of folderFiles){
+		let fileDiv = document.createElement("span")
+		let percent = (file[1]* 100 / folderSize)
+		fileDiv.style.width = percent + "%";
+		fileDiv.style.height = "100%" 
+		fileDiv.style.height = "10px"
+		// fileDiv.innerText = file[0]
+		fileDiv.style.backgroundColor = "#008800"
+		fileDiv.style.outline = "black 1px dashed"
+
+		folderDiv.appendChild(fileDiv)
+	}
+
+
+	for(let sub of builtSubFolders){
+		console.log(sub)
+		folderDiv.appendChild(sub)
+	}
+
+
+	let result = []
+	result.push(folderDiv);
+	result.push(folderSize)
+
+	return result;
+  }
+
+
+
 }
 // Nice

@@ -17,6 +17,11 @@ span.folder {
 	overflow-y: scroll;
 }
 
+
+#blocks{
+	height: 50vh;
+}
+
 .explorerList {
   overflow-y: hidden;
 
@@ -38,7 +43,7 @@ span.folder {
 }
 
 .sizeNumber{
-	float: right;
+	float: right; 
 	margin-right: 50px;
 }
 
@@ -46,4 +51,16 @@ span.folder {
 	width: 100%;
 	height: 100%;
 	outline: 1px black solid;
+}
+
+.typeBlock{
+	width: 100%;
+}
+
+.typeExtension{
+ 
+}
+
+.typeNumber{
+	
 }
