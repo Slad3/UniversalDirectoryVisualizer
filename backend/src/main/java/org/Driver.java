@@ -12,39 +12,47 @@ public class Driver {
 
     /**
      * Constructor for direcotry parsing driver
+     * 
      * @param url - Path of directory to parse
      */
     public Driver(String url) {
         this.url = url;
     }
 
-    
-    /** 
-     * Wrapper function for parseDirectory in case more functionality is requried in the future
+    /**
+     * Wrapper function for parseDirectory in case more functionality is requried in
+     * the future
+     * 
      * @return HashMap - The nested HashMap representation of the parsed directory
      */
     // Will later return a JSON object
     public HashMap parse() {
-        return parseDirectory(this.url);
+        try {
+            return parseDirectory(this.url);
+        } catch (Exception e) {
+            System.err.println(this.url + " does not exist!");
+        }
+        return null;
     }
 
-    
-    /** 
-     * Function to parse a given directory and compress the data into a nested HashMap containing all 
+    /**
+     * Function to parse a given directory and compress the data into a nested
+     * HashMap containing all
      * subdirectories/folder/files as well as the sizes for each item parsed
+     * 
      * @param directory - The path of the directory to be parsed
      * @return HashMap - The nested HashMap representation of the parsed directory
      */
     public HashMap parseDirectory(String directory) {
 
-        // Data structures to hold the files and directories that java gives us from the backend
+        // Data structures to hold the files and directories that java gives us from the
+        // backend
         File[] directories = findDirectories(new File(directory));
         File[] files = findFiles(new File(directory));
 
         // Data structures to be returned so JSON dependency can format into JSON
         HashMap<String, HashMap> directoryDict = new HashMap<>();
         HashMap<String, Long> fileDict = new HashMap<>();
-
 
         // Loop through directories and recursively go through children directories
         // Will just skip specific directories if any errors of opening directories
@@ -54,7 +62,7 @@ public class Driver {
                 directoryDict.put(f.getName(), parseDirectory(f.getAbsolutePath()));
             } catch (Exception e) {
                 System.err.println(f.getAbsolutePath());
-//                e.printStackTrace();
+                // e.printStackTrace();
             }
         }
 
@@ -83,9 +91,9 @@ public class Driver {
         return directoryDict;
     }
 
-    
-    /** 
+    /**
      * Function to find all subdirectories/folders in a root directory
+     * 
      * @param root - The directory to find files in
      * @return File[] - Array of all files in the root
      */
@@ -98,9 +106,9 @@ public class Driver {
         });
     }
 
-    
-    /** 
+    /**
      * Function to find all files in a given root directory/folder
+     * 
      * @param root - The directory to find subdirectories in
      * @return File[] - Array of all subdirectories in the root
      */
