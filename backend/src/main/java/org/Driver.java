@@ -26,9 +26,9 @@ public class Driver {
      * @return HashMap - The nested HashMap representation of the parsed directory
      */
     // Will later return a JSON object
-    public HashMap parse() {
+    public HashMap parse(boolean fixedID) {
         try {
-            return parseDirectory(this.url);
+            return parseDirectory(this.url, fixedID);
         } catch (Exception e) {
             System.err.println(this.url + " does not exist!");
         }
@@ -43,7 +43,7 @@ public class Driver {
      * @param directory - The path of the directory to be parsed
      * @return HashMap - The nested HashMap representation of the parsed directory
      */
-    public HashMap parseDirectory(String directory) {
+    public HashMap parseDirectory(String directory, boolean fixedID) {
 
         // Data structures to hold the files and directories that java gives us from the
         // backend
@@ -59,7 +59,7 @@ public class Driver {
         for (File f : directories) {
             try {
                 // Subdirectories are put into
-                directoryDict.put(f.getName(), parseDirectory(f.getAbsolutePath()));
+                directoryDict.put(f.getName(), parseDirectory(f.getAbsolutePath(), fixedID));
             } catch (Exception e) {
                 System.err.println(f.getAbsolutePath());
                 // e.printStackTrace();
@@ -83,7 +83,12 @@ public class Driver {
         // Adding meta information to current folder
         HashMap<String, String> meta = new HashMap<String, String>();
         meta.put("size", String.valueOf(totalSize));
-        meta.put("htmlId", "files" + Math.random() * 900000);
+        if(fixedID){
+            meta.put("htmlId", "files0");
+        }
+        else{
+            meta.put("htmlId", "files" + Math.random() * 900000);
+        }
         directoryDict.put("::meta::", meta);
 
         directoryDict.put("::files::", fileDict);

@@ -15,7 +15,7 @@ public class DriverTest {
 //        Driver driver = new Driver("C:\\Program Files\\");
 //        Driver driver = new Driver("C:\\");
 //        Driver driver = new Driver(".");
-        System.out.println(driver.parse());
+        System.out.println(driver.parse(false));
 
         long finish = System.currentTimeMillis();
         System.out.println((finish - start)/1000.0);
