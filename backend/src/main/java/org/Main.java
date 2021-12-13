@@ -64,20 +64,4 @@ public class Main {
         System.out.println("Backend Started");
     }
 
-    @Test
-    public void testBadParse(){
-        Driver emptyDriver = new Driver("");
-        assertEquals(null, emptyDriver.parse());
-
-        Driver badDriver = new Driver(":");
-        assertEquals(null, emptyDriver.parse());
-    }
-
-    /** 
-    @Test
-    public void testSelfParse(){
-        Driver driver = new Driver("");
-    }
-
-    */
 }

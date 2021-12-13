@@ -7,6 +7,8 @@ import { VisualizationComponent } from './visualization/visualization.component'
 import { TraversalWrapperComponent } from './traversal-wrapper/traversal-wrapper.component';
 // import { NgxSpinnerService, NgxSpinnerModule } from 'ngx-spinner';
  
+import { HighchartsChartModule } from 'highcharts-angular';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -16,6 +18,7 @@ import { TraversalWrapperComponent } from './traversal-wrapper/traversal-wrapper
   imports: [
     BrowserModule,
     AppRoutingModule,
+	HighchartsChartModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

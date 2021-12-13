@@ -49,7 +49,9 @@
 
 		<div id="fileTypes" class="col-3" style="outline: 1px black solid">
 			<h1>File Types</h1>
-<!-- 		<div>
+
+
+			<!-- 		<div>
 				<ul>
 					<li *ngFor="let item of this.fileTypes" [item]="item">
 						<div>
@@ -62,18 +64,330 @@
 		</div>
 	</div>
 
+	<div class="row">
+		<highcharts-chart class="" [Highcharts]="typesHistogram" [options]="typesHistogramOptions"
+			style="width: 100%; display: block"></highcharts-chart>
+	</div>
 
 	<div class="row">
 		<div id="blocks" class="col-12" style="outline: 1px black solid">
 			<h1>Blocks</h1>
 
+			<div _ngcontent-xru-c16="" class="folderBlock">
+				<div _ngcontent-xru-c16="" class="fileBlock" style="width: 53.3898%;   ">
+				</div>
+				<div _ngcontent-xru-c16="" class="fileBlock" style="width: 4.94875%;   ">
+				</div>
+				<div _ngcontent-xru-c16="" class="fileBlock" style="width: 1.83746%;   ">
+				</div>
+				<div _ngcontent-xru-c16="" class="fileBlock" style="width: 1.06246%;   ">
+				</div>
+				<div _ngcontent-xru-c16="" class="fileBlock" style="width: 0.596251%;   ">
+				</div>
+				<div _ngcontent-xru-c16="" class="fileBlock" style="width: 0.281698%;   ">
+				</div>
+				<div _ngcontent-xru-c16="" class="fileBlock" style="width: 0.105378%;   ">
+				</div>
+				<div _ngcontent-xru-c16="" class="fileBlock" style="width: 0.075635%;   ">
+				</div>
+				<div _ngcontent-xru-c16="" class="fileBlock" style="width: 0.00764177%;   ">
+				</div>
+				<div _ngcontent-xru-c16="" class="fileBlock" style="width: 0.00450933%;   ">
+				</div>
+				<div _ngcontent-xru-c16="" class="folderBlock"
+					style="width: 0.019408%; height: 20px; outline: black solid 2px;">
+					<div _ngcontent-xru-c16="" class="fileBlock" style="width: 39.3744%;   ">
+					</div>
+					<div _ngcontent-xru-c16="" class="fileBlock" style="width: 37.3912%;   ">
+					</div>
+					<div _ngcontent-xru-c16="" class="fileBlock" style="width: 23.2344%;   ">
+					</div>
+				</div>
+				<div _ngcontent-xru-c16="" class="folderBlock"
+					style="width: 0.345011%; height: 20px; outline: black solid 2px;">
+					<div _ngcontent-xru-c16="" class="fileBlock" style="width: 31.7043%;   ">
+					</div>
+					<div _ngcontent-xru-c16="" class="fileBlock" style="width: 31.24%;   ">
+					</div>
+					<div _ngcontent-xru-c16="" class="fileBlock" style="width: 25.8376%;   ">
+					</div>
+					<div _ngcontent-xru-c16="" class="fileBlock" style="width: 11.2182%;   ">
+					</div>
+				</div>
+				<div _ngcontent-xru-c16="" class="folderBlock"
+					style="width: 14.5584%; height: 20px; outline: black solid 2px;">
+					<div _ngcontent-xru-c16="" class="fileBlock" style="width: 29.0915%;   ">
+					</div>
+					<div _ngcontent-xru-c16="" class="fileBlock" style="width: 2.92938%;   ">
+					</div>
+					<div _ngcontent-xru-c16="" class="fileBlock" style="width: 2.66312%;   ">
+					</div>
+					<div _ngcontent-xru-c16="" class="fileBlock" style="width: 2.53824%;   ">
+					</div>
+					<div _ngcontent-xru-c16="" class="fileBlock" style="width: 2.20744%;   ">
+					</div>
+					<div _ngcontent-xru-c16="" class="fileBlock" style="width: 1.94072%;   ">
+					</div>
+					<div _ngcontent-xru-c16="" class="fileBlock" style="width: 1.92111%;   ">
+					</div>
+					<div _ngcontent-xru-c16="" class="fileBlock" style="width: 1.92111%;   ">
+					</div>
+					<div _ngcontent-xru-c16="" class="fileBlock" style="width: 1.90888%;   ">
+					</div>
+					<div _ngcontent-xru-c16="" class="fileBlock" style="width: 1.88886%;   ">
+					</div>
+					<div _ngcontent-xru-c16="" class="fileBlock" style="width: 1.81698%;   ">
+					</div>
+					<div _ngcontent-xru-c16="" class="fileBlock" style="width: 1.776%;   ">
+					</div>
+					<div _ngcontent-xru-c16="" class="fileBlock" style="width: 1.75717%;   ">
+					</div>
+					<div _ngcontent-xru-c16="" class="fileBlock" style="width: 1.70396%;   ">
+					</div>
+					<div _ngcontent-xru-c16="" class="fileBlock" style="width: 1.60504%;   ">
+					</div>
+					<div _ngcontent-xru-c16="" class="fileBlock" style="width: 1.46171%;   ">
+					</div>
+					<div _ngcontent-xru-c16="" class="fileBlock" style="width: 1.45076%;   ">
+					</div>
+					<div _ngcontent-xru-c16="" class="fileBlock" style="width: 1.43395%;   ">
+					</div>
+					<div _ngcontent-xru-c16="" class="fileBlock" style="width: 1.22404%;   ">
+					</div>
+					<div _ngcontent-xru-c16="" class="fileBlock" style="width: 1.10498%;   ">
+					</div>
+					<div _ngcontent-xru-c16="" class="fileBlock" style="width: 1.07292%;   ">
+					</div>
+					<div _ngcontent-xru-c16="" class="fileBlock" style="width: 1.03168%;   ">
+					</div>
+					<div _ngcontent-xru-c16="" class="fileBlock" style="width: 1.01138%;   ">
+					</div>
+					<div _ngcontent-xru-c16="" class="fileBlock" style="width: 0.927404%;   ">
+					</div>
+					<div _ngcontent-xru-c16="" class="fileBlock" style="width: 0.776544%;   ">
+					</div>
+					<div _ngcontent-xru-c16="" class="fileBlock" style="width: 0.717858%;   ">
+					</div>
+					<div _ngcontent-xru-c16="" class="fileBlock" style="width: 0.615309%;   ">
+					</div>
+					<div _ngcontent-xru-c16="" class="fileBlock" style="width: 0.513507%;   ">
+					</div>
+					<div _ngcontent-xru-c16="" class="fileBlock" style="width: 0.511819%;   ">
+					</div>
+					<div _ngcontent-xru-c16="" class="fileBlock" style="width: 0.36822%;   ">
+					</div>
+					<div _ngcontent-xru-c16="" class="fileBlock" style="width: 0.344943%;   ">
+					</div>
+					<div _ngcontent-xru-c16="" class="fileBlock" style="width: 0.292652%;   ">
+					</div>
+					<div _ngcontent-xru-c16="" class="folderBlock"
+						style="width: 27.4708%; height: 20px; outline: black solid 2px;">
+						<div _ngcontent-xru-c16="" class="fileBlock" style="width: 39.3579%;   "></div>
+						<div _ngcontent-xru-c16="" class="fileBlock" style="width: 11.308%;   "></div>
+						<div _ngcontent-xru-c16="" class="fileBlock" style="width: 6.37815%;   "></div>
+						<div _ngcontent-xru-c16="" class="fileBlock" style="width: 6.21526%;   "></div>
+						<div _ngcontent-xru-c16="" class="fileBlock" style="width: 5.8676%;   "></div>
+						<div _ngcontent-xru-c16="" class="fileBlock" style="width: 4.62967%;   "></div>
+						<div _ngcontent-xru-c16="" class="fileBlock" style="width: 4.45577%;   "></div>
+						<div _ngcontent-xru-c16="" class="fileBlock" style="width: 4.37333%;   "></div>
+						<div _ngcontent-xru-c16="" class="fileBlock" style="width: 3.37875%;   "></div>
+						<div _ngcontent-xru-c16="" class="fileBlock" style="width: 3.33806%;   "></div>
+						<div _ngcontent-xru-c16="" class="fileBlock" style="width: 1.74937%;   "></div>
+						<div _ngcontent-xru-c16="" class="fileBlock" style="width: 1.65848%;   "></div>
+						<div _ngcontent-xru-c16="" class="fileBlock" style="width: 1.65209%;   "></div>
+						<div _ngcontent-xru-c16="" class="fileBlock" style="width: 1.60822%;   "></div>
+						<div _ngcontent-xru-c16="" class="fileBlock" style="width: 1.37386%;   "></div>
+						<div _ngcontent-xru-c16="" class="fileBlock" style="width: 1.36993%;   "></div>
+						<div _ngcontent-xru-c16="" class="fileBlock" style="width: 1.28556%;   "></div>
+					</div>
+				</div>
+				<div _ngcontent-xru-c16="" class="folderBlock"
+					style="width: 9.40321%; height: 20px; outline: black solid 2px;">
+					<div _ngcontent-xru-c16="" class="fileBlock" style="width: 22.5746%;   ">
+					</div>
+					<div _ngcontent-xru-c16="" class="fileBlock" style="width: 18.9663%;   ">
+					</div>
+					<div _ngcontent-xru-c16="" class="fileBlock" style="width: 5.69478%;   ">
+					</div>
+					<div _ngcontent-xru-c16="" class="fileBlock" style="width: 4.78087%;   ">
+					</div>
+					<div _ngcontent-xru-c16="" class="fileBlock" style="width: 4.4574%;   ">
+					</div>
+					<div _ngcontent-xru-c16="" class="fileBlock" style="width: 3.44383%;   ">
+					</div>
+					<div _ngcontent-xru-c16="" class="fileBlock" style="width: 3.34013%;   ">
+					</div>
+					<div _ngcontent-xru-c16="" class="fileBlock" style="width: 2.6305%;   ">
+					</div>
+					<div _ngcontent-xru-c16="" class="fileBlock" style="width: 2.61926%;   ">
+					</div>
+					<div _ngcontent-xru-c16="" class="fileBlock" style="width: 2.48052%;   ">
+					</div>
+					<div _ngcontent-xru-c16="" class="fileBlock" style="width: 2.17599%;   ">
+					</div>
+					<div _ngcontent-xru-c16="" class="fileBlock" style="width: 1.79696%;   ">
+					</div>
+					<div _ngcontent-xru-c16="" class="fileBlock" style="width: 1.76582%;   ">
+					</div>
+					<div _ngcontent-xru-c16="" class="fileBlock" style="width: 1.73521%;   ">
+					</div>
+					<div _ngcontent-xru-c16="" class="fileBlock" style="width: 1.35712%;   ">
+					</div>
+					<div _ngcontent-xru-c16="" class="fileBlock" style="width: 1.21196%;   ">
+					</div>
+					<div _ngcontent-xru-c16="" class="fileBlock" style="width: 1.1677%;   ">
+					</div>
+					<div _ngcontent-xru-c16="" class="fileBlock" style="width: 1.09785%;   ">
+					</div>
+					<div _ngcontent-xru-c16="" class="fileBlock" style="width: 1.05553%;   ">
+					</div>
+					<div _ngcontent-xru-c16="" class="fileBlock" style="width: 1.00184%;   ">
+					</div>
+					<div _ngcontent-xru-c16="" class="fileBlock" style="width: 0.800857%;   ">
+					</div>
+					<div _ngcontent-xru-c16="" class="fileBlock" style="width: 0.795553%;   ">
+					</div>
+					<div _ngcontent-xru-c16="" class="fileBlock" style="width: 0.234874%;   ">
+					</div>
+					<div _ngcontent-xru-c16="" class="fileBlock" style="width: 0.189884%;   ">
+					</div>
+					<div _ngcontent-xru-c16="" class="fileBlock" style="width: 0.145346%;   ">
+					</div>
+					<div _ngcontent-xru-c16="" class="fileBlock" style="width: 0.12734%;   ">
+					</div>
+					<div _ngcontent-xru-c16="" class="fileBlock" style="width: 0.0965744%;   "></div>
+					<div _ngcontent-xru-c16="" class="fileBlock" style="width: 0.0397413%;   "></div>
+					<div _ngcontent-xru-c16="" class="fileBlock" style="width: 0.0320938%;   "></div>
+					<div _ngcontent-xru-c16="" class="fileBlock" style="width: 0.0300316%;   "></div>
+					<div _ngcontent-xru-c16="" class="fileBlock" style="width: 0.0169862%;   "></div>
+					<div _ngcontent-xru-c16="" class="fileBlock" style="width: 0.00933092%;   "></div>
+					<div _ngcontent-xru-c16="" class="fileBlock" style="width: 0.00843259%;   "></div>
+					<div _ngcontent-xru-c16="" class="fileBlock" style="width: 0.00552668%;   "></div>
+					<div _ngcontent-xru-c16="" class="fileBlock" style="width: 0.000761628%;   "></div>
+					<div _ngcontent-xru-c16="" class="folderBlock"
+						style="width: 2.99528%; height: 20px; outline: black solid 2px;">
+						<div _ngcontent-xru-c16="" class="folderBlock"
+							style="width: 0.00443353%; height: 20px; outline: black solid 2px;">
+							<div _ngcontent-xru-c16="" class="fileBlock" style="width: 100%;   "></div>
+						</div>
+						<div _ngcontent-xru-c16="" class="folderBlock"
+							style="width: 0.00443353%; height: 20px; outline: black solid 2px;">
+							<div _ngcontent-xru-c16="" class="fileBlock" style="width: 100%;   "></div>
+						</div>
+						<div _ngcontent-xru-c16="" class="folderBlock"
+							style="width: 0.00443353%; height: 20px; outline: black solid 2px;">
+							<div _ngcontent-xru-c16="" class="fileBlock" style="width: 100%;   "></div>
+						</div>
+						<div _ngcontent-xru-c16="" class="folderBlock"
+							style="width: 23.7136%; height: 20px; outline: black solid 2px;">
+							<div _ngcontent-xru-c16="" class="fileBlock" style="width: 99.9813%;   "></div>
+							<div _ngcontent-xru-c16="" class="fileBlock" style="width: 0.0186961%;   "></div>
+						</div>
+						<div _ngcontent-xru-c16="" class="folderBlock"
+							style="width: 0.00443353%; height: 20px; outline: black solid 2px;">
+							<div _ngcontent-xru-c16="" class="fileBlock" style="width: 100%;   "></div>
+						</div>
+						<div _ngcontent-xru-c16="" class="folderBlock"
+							style="width: 74.9159%; height: 20px; outline: black solid 2px;">
+							<div _ngcontent-xru-c16="" class="fileBlock" style="width: 99.9941%;   "></div>
+							<div _ngcontent-xru-c16="" class="fileBlock" style="width: 0.005918%;   "></div>
+						</div>
+						<div _ngcontent-xru-c16="" class="folderBlock"
+							style="width: 0.00443353%; height: 20px; outline: black solid 2px;">
+							<div _ngcontent-xru-c16="" class="fileBlock" style="width: 100%;   "></div>
+						</div>
+						<div _ngcontent-xru-c16="" class="folderBlock"
+							style="width: 1.31285%; height: 20px; outline: black solid 2px;">
+							<div _ngcontent-xru-c16="" class="fileBlock" style="width: 99.6623%;   "></div>
+							<div _ngcontent-xru-c16="" class="fileBlock" style="width: 0.337704%;   "></div>
+						</div>
+						<div _ngcontent-xru-c16="" class="folderBlock"
+							style="width: 0.00443353%; height: 20px; outline: black solid 2px;">
+							<div _ngcontent-xru-c16="" class="fileBlock" style="width: 100%;   "></div>
+						</div>
+						<div _ngcontent-xru-c16="" class="folderBlock"
+							style="width: 0.00443353%; height: 20px; outline: black solid 2px;">
+							<div _ngcontent-xru-c16="" class="fileBlock" style="width: 100%;   "></div>
+						</div>
+						<div _ngcontent-xru-c16="" class="folderBlock"
+							style="width: 0.00443353%; height: 20px; outline: black solid 2px;">
+							<div _ngcontent-xru-c16="" class="fileBlock" style="width: 100%;   "></div>
+						</div>
+						<div _ngcontent-xru-c16="" class="folderBlock"
+							style="width: 0.00443353%; height: 20px; outline: black solid 2px;">
+							<div _ngcontent-xru-c16="" class="fileBlock" style="width: 100%;   "></div>
+						</div>
+						<div _ngcontent-xru-c16="" class="folderBlock"
+							style="width: 0.00443353%; height: 20px; outline: black solid 2px;">
+							<div _ngcontent-xru-c16="" class="fileBlock" style="width: 100%;   "></div>
+						</div>
+						<div _ngcontent-xru-c16="" class="folderBlock"
+							style="width: 0.00443353%; height: 20px; outline: black solid 2px;">
+							<div _ngcontent-xru-c16="" class="fileBlock" style="width: 100%;   "></div>
+						</div>
+						<div _ngcontent-xru-c16="" class="folderBlock"
+							style="width: 0.00443353%; height: 20px; outline: black solid 2px;">
+							<div _ngcontent-xru-c16="" class="fileBlock" style="width: 100%;   "></div>
+						</div>
+						<div _ngcontent-xru-c16="" class="folderBlock"
+							style="width: 0.00443353%; height: 20px; outline: black solid 2px;">
+							<div _ngcontent-xru-c16="" class="fileBlock" style="width: 100%;   "></div>
+						</div>
+					</div>
+					<div _ngcontent-xru-c16="" class="folderBlock"
+						style="width: 9.03983%; height: 20px; outline: black solid 2px;">
+						<div _ngcontent-xru-c16="" class="folderBlock"
+							style="width: 19.2744%; height: 20px; outline: black solid 2px;">
+							<div _ngcontent-xru-c16="" class="fileBlock" style="width: 90.8913%;   "></div>
+							<div _ngcontent-xru-c16="" class="fileBlock" style="width: 8.14233%;   "></div>
+							<div _ngcontent-xru-c16="" class="fileBlock" style="width: 0.966373%;   "></div>
+						</div>
+						<div _ngcontent-xru-c16="" class="folderBlock"
+							style="width: 79.3571%; height: 20px; outline: black solid 2px;">
+							<div _ngcontent-xru-c16="" class="fileBlock" style="width: 77.5048%;   "></div>
+							<div _ngcontent-xru-c16="" class="fileBlock" style="width: 22.2948%;   "></div>
+							<div _ngcontent-xru-c16="" class="fileBlock" style="width: 0.20036%;   "></div>
+						</div>
+						<div _ngcontent-xru-c16="" class="folderBlock"
+							style="width: 1.36852%; height: 20px; outline: black solid 2px;">
+							<div _ngcontent-xru-c16="" class="fileBlock" style="width: 100%;   "></div>
+						</div>
+					</div>
+					<div _ngcontent-xru-c16="" class="folderBlock"
+						style="width: 0.0156466%; height: 20px; outline: black solid 2px;">
+						<div _ngcontent-xru-c16="" class="fileBlock" style="width: 67.998%;   "></div>
+						<div _ngcontent-xru-c16="" class="fileBlock" style="width: 8.66201%;   "></div>
+						<div _ngcontent-xru-c16="" class="fileBlock" style="width: 7.91313%;   "></div>
+						<div _ngcontent-xru-c16="" class="fileBlock" style="width: 7.31403%;   "></div>
+						<div _ngcontent-xru-c16="" class="fileBlock" style="width: 3.76935%;   "></div>
+						<div _ngcontent-xru-c16="" class="folderBlock"
+							style="width: 4.34348%; height: 20px; outline: black solid 2px;">
+							<div _ngcontent-xru-c16="" class="fileBlock" style="width: 100%;   "></div>
+						</div>
+					</div>
+					<div _ngcontent-xru-c16="" class="folderBlock"
+						style="width: 0.0617856%; height: 20px; outline: black solid 2px;">
+						<div _ngcontent-xru-c16="" class="fileBlock" style="width: 21.6891%;   "></div>
+						<div _ngcontent-xru-c16="" class="fileBlock" style="width: 19.3438%;   "></div>
+						<div _ngcontent-xru-c16="" class="fileBlock" style="width: 4.36816%;   "></div>
+						<div _ngcontent-xru-c16="" class="fileBlock" style="width: 3.20501%;   "></div>
+						<div _ngcontent-xru-c16="" class="fileBlock" style="width: 1.64359%;   "></div>
+						<div _ngcontent-xru-c16="" class="fileBlock" style="width: 0.562615%;   "></div>
+						<div _ngcontent-xru-c16="" class="fileBlock" style="width: 0.202288%;   "></div>
+						<div _ngcontent-xru-c16="" class="folderBlock"
+							style="width: 48.9854%; height: 20px; outline: black solid 2px;">
+							<div _ngcontent-xru-c16="" class="fileBlock" style="width: 64.3438%;   "></div>
+							<div _ngcontent-xru-c16="" class="fileBlock" style="width: 27.5648%;   "></div>
+							<div _ngcontent-xru-c16="" class="fileBlock" style="width: 7.52355%;   "></div>
+							<div _ngcontent-xru-c16="" class="fileBlock" style="width: 0.567815%;   "></div>
+						</div>
+					</div>
+				</div>
+			</div>
 
 
-			
 			<!-- <div class="container-fluid" style="height: 100%">
 				<div class="row">
-					
-
 				</div>
 			</div> -->
 		</div>

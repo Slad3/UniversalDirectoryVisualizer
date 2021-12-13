@@ -1,4 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { HighchartsChartModule } from 'highcharts-angular';
+
+import * as Highcharts from 'highcharts';
 @Component({
   selector: 'visualization',
   templateUrl: './visualization.component.html',
@@ -17,6 +20,10 @@ export class VisualizationComponent implements OnInit {
 
   done: boolean;
 
+  typesHistogram: typeof Highcharts;
+  typesHistogramOptions: Highcharts.Options;
+  typesHistogramNotFound: string[];
+
   ngOnInit(): void {
     console.log(this.data);
 
@@ -24,7 +31,7 @@ export class VisualizationComponent implements OnInit {
     this.counter = 0;
 
     this.dipslayFileTypes(this.consolidateFileTypes());
-	this.parseBlocks()
+    this.parseBlocks();
   }
 
   /*
@@ -128,6 +135,7 @@ export class VisualizationComponent implements OnInit {
    * @returns the converted number fixed to 2 decimal points
    */
   convertSize(num: number) {
+	  return num
     if (num > 1000000000000) {
       num /= 1000000000000;
       parseFloat(num.toFixed(2));
@@ -269,95 +277,134 @@ export class VisualizationComponent implements OnInit {
     if (fileTypesBlock) {
       for (let item of types) {
         let tempDiv = document.createElement('div');
-		tempDiv.classList.add("typeBlock")
+        tempDiv.classList.add('typeBlock');
 
-		item[1] = this.convertSize(item[1])
+        item[1] = this.convertSize(item[1]);
 
-		let extSpan = document.createElement("span");
-		extSpan.innerText = item[0];
-		extSpan.classList.add("typeExtension")
-		tempDiv.appendChild(extSpan);
+        let extSpan = document.createElement('span');
+        extSpan.innerText = item[0];
+        extSpan.classList.add('typeExtension');
+        tempDiv.appendChild(extSpan);
 
-		tempDiv.innerHTML += " | "
+        tempDiv.innerHTML += ' | ';
 
-		let numSpan = document.createElement("span");
-		numSpan.innerText = item[1];
-		numSpan.className = "typeNumber"
-		tempDiv.appendChild(numSpan);
+        let numSpan = document.createElement('span');
+        numSpan.innerText = item[1];
+        numSpan.className = 'typeNumber';
+        tempDiv.appendChild(numSpan);
 
         fileTypesBlock.appendChild(tempDiv);
       }
+
+	  // Histogram
+
+	// Loading Histogram
+		const typesData = [];
+		let typesCategories = [];
+		this.typesHistogramNotFound = [];
+
+		for(let item of types){
+			typesCategories.push(item[0])
+			typesData.push(item[1])
+
+		}
+
+		this.typesHistogram = Highcharts;
+		this.typesHistogramOptions = {
+		title: {
+			text: `FileTypes`,
+		},
+		xAxis: {
+			categories: typesCategories,
+		},
+		series: [
+			{
+			data: typesData,
+			type: 'column',
+			color: '#005522',
+			name: 'File Type'
+			},
+		],
+		tooltip: {
+			formatter: function () {
+			return (
+				this.y + '</b>'
+			);
+			},
+		},
+		};
+ 
+
+
+
+
+
+
+
+
+
+
+
     }
   }
 
-
-  parseBlocks(){
-	let blocksDiv = document.getElementById("blocks");
-	let subBlock = this.parseFolder(this.data)[0]
-	console.log("sub block: ", subBlock)
-	blocksDiv.appendChild(subBlock);
-
+  parseBlocks() {
+    let blocksDiv = document.getElementById('blocks');
+    let subBlock = this.parseFolder(this.data)[0];
+    console.log('sub block: ', subBlock);
+    blocksDiv.appendChild(subBlock);
   }
 
-  parseFolder(folderData: Object){
+  parseFolder(folderData: Object) {
+    let folderDiv = document.createElement('div');
+    let folderSize = Number(folderData['::meta::'].size);
+    let folderFiles = this.getItems(folderData['::files::']);
+    let folderItems = this.getItems(folderData);
 
-	let folderDiv = document.createElement("span");
-	let folderSize = Number(folderData['::meta::'].size)
-	let folderFiles = this.getItems(folderData['::files::'])
-	let folderItems = this.getItems(folderData)
+    console.log('Folder Size: ', folderSize);
+    console.log('Folder files: ', folderFiles);
 
-	console.log("Folder Size: ", folderSize)
-	console.log("Folder files: ", folderFiles)
+    let builtSubFolders = [];
 
-	let builtSubFolders = []
+    for (let item of folderItems) {
+      if (String(item[0]).substring(0, 2) !== '::') {
+        let subFolder = this.parseFolder(item[1]);
+        let percent = (subFolder[1] * 100) / folderSize;
+        subFolder[0].style.width = percent + '%';
+        // subFolder[0].style.height = "100%"
+        subFolder[0].style.height = '20px';
+        subFolder[0].style.outline = 'black 2px solid';
 
-	for(let item of folderItems){
-		if(String(item[0]).substring(0, 2) !== "::"){
-			let subFolder = this.parseFolder(item[1])
-			let percent = (subFolder[1]* 100 / folderSize) 
-			subFolder[0].style.width = percent + "%";
-			// subFolder[0].style.height = "100%"
-			subFolder[0].style.height = "20px"
-			subFolder[0].style.outline = "black 2px solid"
-			
-			builtSubFolders.push(subFolder[0])
-		}
-	}
+        builtSubFolders.push(subFolder[0]);
+      }
+    }
 
- 
+    console.log('Built sub Folders: ', builtSubFolders);
 
-	console.log("Built sub Folders: ", builtSubFolders)
+    for (let file of folderFiles) {
+      let fileDiv = document.createElement('span');
+      let percent = (file[1] * 100) / folderSize;
+      fileDiv.style.width = percent + '%';
+      // fileDiv.style.height = "100%"
+      fileDiv.style.height = '10px';
+      // fileDiv.innerText = file[0]
+      //   fileDiv.style.backgroundColor = '#008800';
+      fileDiv.style.outline = 'black 1px dashed';
+      fileDiv.classList.add('fileBlock');
+      folderDiv.appendChild(fileDiv);
+    }
 
-	let fileDivs = []
+    for (let sub of builtSubFolders) {
+      folderDiv.appendChild(sub);
+    }
 
-	for(let file of folderFiles){
-		let fileDiv = document.createElement("span")
-		let percent = (file[1]* 100 / folderSize)
-		fileDiv.style.width = percent + "%";
-		fileDiv.style.height = "100%" 
-		fileDiv.style.height = "10px"
-		// fileDiv.innerText = file[0]
-		fileDiv.style.backgroundColor = "#008800"
-		fileDiv.style.outline = "black 1px dashed"
+    folderDiv.classList.add('folderBlock');
 
-		folderDiv.appendChild(fileDiv)
-	}
+    let result = [];
+    result.push(folderDiv);
+    result.push(folderSize);
 
-
-	for(let sub of builtSubFolders){
-		console.log(sub)
-		folderDiv.appendChild(sub)
-	}
-
-
-	let result = []
-	result.push(folderDiv);
-	result.push(folderSize)
-
-	return result;
+    return result;
   }
-
-
-
 }
 // Nice
