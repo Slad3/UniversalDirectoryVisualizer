@@ -25,6 +25,7 @@ export class VisualizationComponent implements OnInit {
   typesHistogramNotFound: string[];
 
   ngOnInit(): void {
+    // this.done = false;
     console.log(this.data);
 
     this.fullObject = JSON.stringify(this.data);
@@ -32,6 +33,8 @@ export class VisualizationComponent implements OnInit {
 
     this.dipslayFileTypes(this.consolidateFileTypes());
     this.parseBlocks();
+
+	// this.done = true;
   }
 
   /*
@@ -135,7 +138,6 @@ export class VisualizationComponent implements OnInit {
    * @returns the converted number fixed to 2 decimal points
    */
   convertSize(num: number) {
-	  return num
     if (num > 1000000000000) {
       num /= 1000000000000;
       parseFloat(num.toFixed(2));
@@ -296,62 +298,47 @@ export class VisualizationComponent implements OnInit {
         fileTypesBlock.appendChild(tempDiv);
       }
 
-	  // Histogram
+      // Histogram
 
-	// Loading Histogram
-		const typesData = [];
-		let typesCategories = [];
-		this.typesHistogramNotFound = [];
+      // Loading Histogram
+    //   const typesData = [];
+    //   let typesCategories = [];
+    //   this.typesHistogramNotFound = [];
 
-		for(let item of types){
-			typesCategories.push(item[0])
-			typesData.push(item[1])
+    //   for (let item of types) {
+    //     typesCategories.push(item[0]);
+    //     typesData.push(item[1]);
+    //   }
 
-		}
-
-		this.typesHistogram = Highcharts;
-		this.typesHistogramOptions = {
-		title: {
-			text: `FileTypes`,
-		},
-		xAxis: {
-			categories: typesCategories,
-		},
-		series: [
-			{
-			data: typesData,
-			type: 'column',
-			color: '#005522',
-			name: 'File Type'
-			},
-		],
-		tooltip: {
-			formatter: function () {
-			return (
-				this.y + '</b>'
-			);
-			},
-		},
-		};
- 
-
-
-
-
-
-
-
-
-
-
-
+    //   this.typesHistogram = Highcharts;
+    //   this.typesHistogramOptions = {
+    //     title: {
+    //       text: `FileTypes`,
+    //     },
+    //     xAxis: {
+    //       categories: typesCategories,
+    //     },
+    //     series: [
+    //       {
+    //         data: typesData,
+    //         type: 'column',
+    //         color: '#005522',
+    //         name: 'File Type',
+    //       },
+    //     ],
+    //     tooltip: {
+    //       formatter: function () {
+    //         return this.y + '</b>';
+    //       },
+    //     },
+    //   };
     }
   }
 
   parseBlocks() {
     let blocksDiv = document.getElementById('blocks');
     let subBlock = this.parseFolder(this.data)[0];
-    console.log('sub block: ', subBlock);
+    // console.log('sub block: ', subBlock);
     blocksDiv.appendChild(subBlock);
   }
 
@@ -361,8 +348,8 @@ export class VisualizationComponent implements OnInit {
     let folderFiles = this.getItems(folderData['::files::']);
     let folderItems = this.getItems(folderData);
 
-    console.log('Folder Size: ', folderSize);
-    console.log('Folder files: ', folderFiles);
+    // console.log('Folder Size: ', folderSize);
+    // console.log('Folder files: ', folderFiles);
 
     let builtSubFolders = [];
 
@@ -379,7 +366,7 @@ export class VisualizationComponent implements OnInit {
       }
     }
 
-    console.log('Built sub Folders: ', builtSubFolders);
+    // console.log('Built sub Folders: ', builtSubFolders);
 
     for (let file of folderFiles) {
       let fileDiv = document.createElement('span');

@@ -22,7 +22,7 @@ const argv = key => {
 
 function createWindow() {
 	const win = new BrowserWindow({
-		width: 1280, 
+		width: 1280,
 		height: 800,
 		icon: "frontend\\src\\assets\\images\\UDV_AppLogo.ico",
 		autoHideMenuBar: true,
@@ -41,12 +41,10 @@ function createWindow() {
 		console.log(__dirname)
 		console.log("resource index: ", resourceIndex)
 		win.webContents.loadFile(__dirname.substr(0, resourceIndex + "win-unpacked/".length) + "/src/public/index.html")
-
-
 	}
 
 	// For opening the debugger inside electron
-	win.webContents.openDevTools()
+	// win.webContents.openDevTools()
 }
 
 app.whenReady().then(() => {
@@ -54,6 +52,8 @@ app.whenReady().then(() => {
 	destroyCurrentServer()
 	var javaProcess = spawn('java', ['-jar', 'src/server/backend.jar']);
 	console.log(javaProcess.pid)
+
+
 	javaProcess.stdout.on('data', data => {
 		var statement = data.toString('utf8');
 
@@ -66,9 +66,7 @@ app.whenReady().then(() => {
 
 		if (statement.includes("Backend Started")) {
 			console.log("start");
-
 			startNodeServer().then(() => { createWindow() })
-
 		}
 
 		if (statement.includes("Stopped Jooby")) {
@@ -86,11 +84,9 @@ app.whenReady().then(() => {
 	})
 
 	app.on('window-all-closed', async () => {
-
 		javaProcess.stdout.destroy()
 		javaProcess.stdin.destroy()
 		javaProcess.stderr.destroy()
-
 		javaProcess.kill();
 
 		await destroyCurrentServer()
@@ -99,7 +95,6 @@ app.whenReady().then(() => {
 			app.quit()
 		}
 	})
-
 })
 
 async function destroyCurrentServer() {
@@ -120,12 +115,11 @@ async function startNodeServer() {
 
 	const asyncHandler = require('express-async-handler')
 	server.get('/', asyncHandler(async (req, res) => {
-		let data = await fileExplorerPopUp();
 
+		let data = await fileExplorerPopUp();
 		if (!data || data.canceled) {
 			res.json({ "Error": "cancelled" })
 		}
-
 		return res.json({ "filePath": data['filePaths'][0] })
 
 	}))

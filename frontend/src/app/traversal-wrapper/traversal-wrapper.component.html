@@ -8,17 +8,18 @@
 
 <!-- This button group is for the files button drop down that allows the opening of a new drive or folder to visualize, refresh the visualization and the files, and a button to close the application -->
 <div class="btn-group">
-	<button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-	  File
+	<button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
+		aria-expanded="false">
+		File
 	</button>
 	<div class="dropdown-menu">
-	  <a class="dropdown-item" (click)="this.openDrive()">Open</a>
-	  <div class="dropdown-divider"></div>
-	  <a class="dropdown-item" href="#">Refresh</a>
-	  <div class="dropdown-divider"></div>
-	  <a class="dropdown-item" (click)="this.closeApp()">Quit</a>
+		<a class="dropdown-item" (click)="this.openDrive()">Open</a>
+		<div class="dropdown-divider"></div>
+		<a class="dropdown-item" href="#">Refresh</a>
+		<div class="dropdown-divider"></div>
+		<a class="dropdown-item" (click)="this.closeApp()">Quit</a>
 	</div>
-  </div>
+</div>
 
 <!-- This button dropdown is to copy the current file path to be able to edit the files in the operating system explorer-->
 <div class="btn-group">
@@ -29,7 +30,7 @@
 	  <a class="dropdown-item" href="#">Copy Path</a>
 	</div>
   </div>
-  
+
 <!-- It is a drop down button menu
 First option is to open the folder or file that is selected
 Second option is to explore the specific directory at the specific selected spot
@@ -38,7 +39,7 @@ Fourth is to permanently delete the file or folder
 Fifth is to change the properties of the program
 Sixth is to empty the recycling bin
 Last is to choose multiple different files or folder to delete and delete all of them at once-->
-<div class="btn-group">
+ <div class="btn-group"> 
 	<button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 	  Clean Up
 	</button>
@@ -55,8 +56,8 @@ Last is to choose multiple different files or folder to delete and delete all of
 	  <div class="dropdown-divider"></div>
 	  <a class="dropdown-item" href="#">User Defined Cleanup</a>
 	</div>
-  </div>
-  
+  </div> 
+
 <!-- This is different actions to zoom in or out of the file explorer folder selected, select a child or select the parent of the folder-->
 <div class="btn-group">
 	<button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -80,7 +81,7 @@ Last is to choose multiple different files or folder to delete and delete all of
 	  <a class="dropdown-item" href="#">Send Mail to Owner</a>
 	</div>
   </div>
-  
+
 <!-- Drop down button to change some of the programs options
 First is to show the amount of free space left on the drive
 Second is to show the unknown files on the drive with no file extension assignment
@@ -105,7 +106,7 @@ Seventh is to do more configuration of the program and the looks of the program-
 	  <a class="dropdown-item" href="#">Configure...</a>
 	</div>
   </div>
-  
+
 <!-- This is the help button dropdown for more documentation help and an about to talk about the specific information about version of program and more-->
 <div class="btn-group">
 	<button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -118,8 +119,8 @@ Seventh is to do more configuration of the program and the looks of the program-
 	</div>
   </div>
 <div class="divider py-1 bg-dark"></div>
-<button id="openDriveButton" (click)="this.openDrive()"><span class="openDrive"></span></button>
-<button><span class="refresh"></span></button>
+<!-- <button id="openDriveButton" (click)="this.openDrive()"><span class="openDrive"></span></button> -->
+<!-- <button><span class="refresh"></span></button>
 <button><span class="openItem"></span></button>
 <button><span class="copyPath"></span></button>
 <button><span class="explorer"></span></button>
@@ -130,6 +131,6 @@ Seventh is to do more configuration of the program and the looks of the program-
 <button><span class="zoomIn"></span></button>
 <button><span class="zoomOut"></span></button>
 <button><span class="help"></span></button>
-  <div class="divider py-1 bg-dark"></div>
+  <div class="divider py-1 bg-dark"></div> -->
 <visualization *ngIf="data !== undefined" [data]="this.data">
 </visualization>
