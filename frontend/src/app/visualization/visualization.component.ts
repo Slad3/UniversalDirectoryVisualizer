@@ -34,7 +34,7 @@ export class VisualizationComponent implements OnInit {
     this.dipslayFileTypes(this.consolidateFileTypes());
     this.parseBlocks();
 
-	// this.done = true;
+    // this.done = true;
   }
 
   /*
@@ -275,6 +275,7 @@ export class VisualizationComponent implements OnInit {
 
   dipslayFileTypes(types: any) {
     let fileTypesBlock = document.getElementById('fileTypes');
+    fileTypesBlock.innerHTML = '';
 
     if (fileTypesBlock) {
       for (let item of types) {
@@ -301,37 +302,37 @@ export class VisualizationComponent implements OnInit {
       // Histogram
 
       // Loading Histogram
-    //   const typesData = [];
-    //   let typesCategories = [];
-    //   this.typesHistogramNotFound = [];
+      //   const typesData = [];
+      //   let typesCategories = [];
+      //   this.typesHistogramNotFound = [];
 
-    //   for (let item of types) {
-    //     typesCategories.push(item[0]);
-    //     typesData.push(item[1]);
-    //   }
+      //   for (let item of types) {
+      //     typesCategories.push(item[0]);
+      //     typesData.push(item[1]);
+      //   }
 
-    //   this.typesHistogram = Highcharts;
-    //   this.typesHistogramOptions = {
-    //     title: {
-    //       text: `FileTypes`,
-    //     },
-    //     xAxis: {
-    //       categories: typesCategories,
-    //     },
-    //     series: [
-    //       {
-    //         data: typesData,
-    //         type: 'column',
-    //         color: '#005522',
-    //         name: 'File Type',
-    //       },
-    //     ],
-    //     tooltip: {
-    //       formatter: function () {
-    //         return this.y + '</b>';
-    //       },
-    //     },
-    //   };
+      //   this.typesHistogram = Highcharts;
+      //   this.typesHistogramOptions = {
+      //     title: {
+      //       text: `FileTypes`,
+      //     },
+      //     xAxis: {
+      //       categories: typesCategories,
+      //     },
+      //     series: [
+      //       {
+      //         data: typesData,
+      //         type: 'column',
+      //         color: '#005522',
+      //         name: 'File Type',
+      //       },
+      //     ],
+      //     tooltip: {
+      //       formatter: function () {
+      //         return this.y + '</b>';
+      //       },
+      //     },
+      //   };
     }
   }
 
